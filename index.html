@@ -4,10 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gamma Prompt Generator By ST — Synthesist Transformation</title>
-<meta name="description" content="Generate a ready-to-paste Gamma AI prompt in 3 steps. Free tool by Synthesist Transformation. Alat percuma untuk jana prompt Gamma AI.">
-<meta property="og:title" content="Gamma Prompt Generator By ST">
-<meta property="og:description" content="Generate your Gamma AI page prompt in 3 steps. Free. No sign-up. Works for business, resume, portfolio and more.">
+<title>Gamma Prompter By ST — Synthesist Transformation</title>
+<meta name="description" content="Generate a ready-to-paste Gamma AI prompt in 3 steps. Premium AI app by Synthesist Transformation.">
+<meta property="og:title" content="Gamma Prompter By ST">
+<meta property="og:description" content="Generate your Gamma AI page prompt in 3 steps. Works for business, resume, portfolio and more.">
 <meta property="og:url" content="https://stmy-ai.github.io/st-gamma-prompt/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://stmy-ai.github.io/st-gamma-prompt/logo.png">
@@ -34,7 +34,7 @@ input,textarea,.prompt-text{-webkit-user-select:text;user-select:text}
 @media(max-width:480px){.brand-sub,.header-site-link{display:none}.how-btn .how-txt{display:none}}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,10,10,.75);z-index:1000;padding:16px;overflow-y:auto;align-items:flex-start;justify-content:center}
 .modal-overlay.open{display:flex}
-.modal-box{background:var(--white);border-radius:16px;max-width:520px;width:100%;margin:auto;overflow:hidden;animation:fadeUp .25s ease}
+.modal-box{background:var(--white);border-radius:16px;max-width:520px;width:100%;margin:auto;overflow:hidden;animation:fadeUp .25s ease;box-shadow:0 20px 40px rgba(0,0,0,0.2)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .modal-head{background:var(--m);padding:18px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .modal-head h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--cr)}
@@ -47,35 +47,31 @@ input,textarea,.prompt-text{-webkit-user-select:text;user-select:text}
 .how-content h3{font-size:14px;font-weight:500;color:var(--m);margin-bottom:3px}
 .how-content p{font-size:13px;color:var(--txt3);line-height:1.6}
 .modal-tip{background:var(--crl);border:1px solid var(--crm);border-radius:var(--rs);padding:12px 14px;margin-top:18px;font-size:13px;color:var(--m);line-height:1.6}
-.hero{background:var(--m);padding:36px 16px 44px;text-align:center;position:relative;overflow:hidden}
+.hero{background:var(--m);padding:48px 16px 52px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(252,230,201,.05);pointer-events:none}
 .hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(217,78,15,.06);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(252,230,201,.18);border:1px solid rgba(252,230,201,.4);color:var(--cr);font-size:11px;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:20px;margin-bottom:14px;font-weight:500}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--or);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero-tool{font-family:'Playfair Display',serif;font-size:11px;color:var(--crm);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;font-style:italic;opacity:.9}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,40px);color:var(--cr);line-height:1.25;margin-bottom:12px}
+.hero-tool{font-family:'Playfair Display',serif;font-size:12px;color:var(--crm);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px;font-style:italic;opacity:.85}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,44px);color:var(--cr);line-height:1.2;margin-bottom:14px}
 .hero h1 em{color:var(--crm);font-style:italic}
-.hero-sub{font-size:14px;color:rgba(252,230,201,.82);max-width:440px;margin:0 auto 22px;line-height:1.7}
+.hero-sub{font-size:14px;color:rgba(252,230,201,.82);max-width:440px;margin:0 auto 26px;line-height:1.7}
 .hero-steps{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}
-/* Updated Step Styles */
-.hero-step{background:transparent;border:1px solid rgba(252,230,201,.45);color:var(--cr);font-size:12px;font-weight:500;padding:6px 13px;border-radius:20px;letter-spacing:.01em}
-.hero-step.active {background:var(--cr); color:var(--m); border-color:var(--cr);}
-.hero-step span{margin-right:4px;font-weight:600; color:var(--cr); opacity: 0.7;}
+.hero-step{background:transparent;border:1px solid rgba(252,230,201,.45);color:var(--cr);font-size:12px;font-weight:500;padding:6px 13px;border-radius:20px;letter-spacing:.01em;transition:all 0.3s ease;}
+.hero-step.active {background:var(--cr); color:var(--m); border-color:var(--cr); box-shadow: 0 4px 12px rgba(0,0,0,0.15);}
+.hero-step span{margin-right:4px;font-weight:600; color:var(--cr); opacity: 0.7; transition:all 0.3s ease;}
 .hero-step.active span {color:var(--m); opacity: 1;}
 
-.main{max-width:660px;margin:0 auto;padding:28px 14px 80px}
+.main{max-width:660px;margin:0 auto;padding:32px 14px 80px}
 .progress-wrap{margin-bottom:24px}
 .progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--txt3);margin-bottom:7px}
 .progress-meta strong{color:var(--m);font-weight:500}
 .track{height:3px;background:var(--bds);border-radius:2px;overflow:hidden}
 .fill{height:100%;background:var(--cr);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
-.step-card{background:var(--white);border:1px solid var(--bd);border-radius:14px;padding:22px 18px;margin-bottom:12px;display:none;animation:fadeUp .3s ease forwards}
+.step-card{background:var(--white);border:1px solid var(--bd);border-radius:14px;padding:24px 20px;margin-bottom:12px;display:none;animation:fadeUp .3s ease forwards;box-shadow:0 12px 30px rgba(107,23,23,0.03)}
 .step-card.active{display:block}
 .step-tag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:7px}
 .step-card h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--m);margin-bottom:5px}
-.step-intro{font-size:13px;color:var(--txt3);margin-bottom:18px;line-height:1.6}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.step-intro{font-size:13px;color:var(--txt3);margin-bottom:20px;line-height:1.6}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:480px){.form-grid{grid-template-columns:1fr}}
 .form-group{display:flex;flex-direction:column;gap:5px}
 .form-group.full{grid-column:1/-1}
@@ -97,58 +93,58 @@ input[type=color]{width:42px;height:42px;border:1.5px solid var(--bd);border-rad
 .toggle-pill:hover{border-color:var(--m);background:var(--crl)}
 .toggle-pill.on{background:var(--m);border-color:var(--m);color:var(--cr);font-weight:500}
 .toggle-group.tg-error .toggle-pill{border-color:var(--err)}
-.step-error{background:var(--err-bg);border:1px solid #F5C6C0;border-radius:var(--rs);padding:10px 13px;font-size:13px;color:var(--err);margin-bottom:13px;display:none;align-items:center;gap:8px}
+.step-error{background:var(--err-bg);border:1px solid #F5C6C0;border-radius:var(--rs);padding:10px 13px;font-size:13px;color:var(--err);margin-bottom:14px;display:none;align-items:center;gap:8px}
 .step-error.show{display:flex}
 @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
 .shake{animation:shake .35s ease}
-.form-divider{grid-column:1/-1;height:1px;background:var(--bds);margin:3px 0}
-.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px}
+.form-divider{grid-column:1/-1;height:1px;background:var(--bds);margin:4px 0}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:10px}
 .btn{padding:11px 20px;border-radius:var(--rs);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;transition:all .15s;min-height:44px}
 .btn-back{background:transparent;border:1.5px solid var(--bd);color:var(--txt3)}
 .btn-back:hover{background:var(--bg)}
 .btn-next{background:var(--m);color:var(--cr)}
-.btn-next:hover{background:var(--ml)}
-.btn-generate{background:var(--or);color:white;width:100%;padding:14px;font-size:15px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;border:none;min-height:50px;transition:background .15s}
-.btn-generate:hover{background:var(--orl)}
+.btn-next:hover{background:var(--ml); box-shadow: 0 4px 12px rgba(107,23,23,0.15);}
+.btn-generate{background:var(--or);color:white;width:100%;padding:14px;font-size:15px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;border:none;min-height:50px;transition:all .15s}
+.btn-generate:hover{background:var(--orl); box-shadow: 0 4px 14px rgba(217,78,15,0.25);}
 #result-section{display:none}
-.result-header{text-align:center;margin-bottom:22px}
-.result-tick{width:50px;height:50px;background:var(--crl);border:2px solid var(--crm);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 11px}
-.result-header h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--m);margin-bottom:4px}
-.result-header p{font-size:13px;color:var(--txt3)}
-.output-card{background:var(--white);border:1px solid var(--bd);border-radius:13px;margin-bottom:12px;overflow:hidden}
-.output-head{display:flex;align-items:center;justify-content:space-between;padding:11px 15px;border-bottom:1px solid var(--bds);gap:8px;flex-wrap:wrap}
+.result-header{text-align:center;margin-bottom:24px}
+.result-tick{width:54px;height:54px;background:var(--crl);border:2px solid var(--crm);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 12px; color:var(--m);}
+.result-header h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--m);margin-bottom:6px}
+.result-header p{font-size:14px;color:var(--txt3)}
+.output-card{background:var(--white);border:1px solid var(--bd);border-radius:14px;margin-bottom:14px;overflow:hidden;box-shadow:0 8px 24px rgba(107,23,23,0.03)}
+.output-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--bds);gap:8px;flex-wrap:wrap;background:var(--bg);}
 .output-title{font-size:13px;font-weight:500;color:var(--m);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.output-badge{font-size:10px;background:var(--crl);color:var(--m);padding:2px 8px;border-radius:10px;border:1px solid var(--crm);white-space:nowrap}
-.copy-btn{font-size:12px;font-weight:500;padding:8px 13px;border-radius:20px;border:1.5px solid var(--bd);background:var(--white);color:var(--txt2);cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .15s;white-space:nowrap;min-height:36px}
+.output-badge{font-size:10px;background:var(--white);color:var(--m);padding:3px 9px;border-radius:12px;border:1px solid var(--crm);white-space:nowrap;font-weight:600;}
+.copy-btn{font-size:12px;font-weight:500;padding:8px 14px;border-radius:20px;border:1.5px solid var(--bd);background:var(--white);color:var(--txt2);cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;transition:all .15s;white-space:nowrap;min-height:36px}
 .copy-btn:hover{background:var(--crl);border-color:var(--crm);color:var(--m)}
 .copy-btn.copied{background:var(--ok-bg);border-color:#81C784;color:var(--ok)}
-.output-body{padding:14px}
-.prompt-text{font-family:'DM Mono',monospace;font-size:12px;line-height:1.8;color:var(--txt2);white-space:pre-wrap;word-break:break-word;background:var(--bg);border-radius:var(--rs);padding:13px;border:1px solid var(--bds)}
-.lead-card{background:var(--m);border-radius:14px;padding:24px 18px;margin-top:18px}
+.output-body{padding:16px}
+.prompt-text{font-family:'DM Mono',monospace;font-size:13px;line-height:1.7;color:var(--txt2);white-space:pre-wrap;word-break:break-word;background:var(--white);border-radius:var(--rs);padding:14px;border:1px solid var(--bds)}
+.lead-card{background:var(--m);border-radius:16px;padding:28px 20px;margin-top:20px;box-shadow:0 12px 30px rgba(107,23,23,0.15)}
 .lead-inner{max-width:420px;margin:0 auto}
 .lead-badge{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:rgba(252,230,201,.15);color:var(--crm);padding:4px 11px;border-radius:20px;margin-bottom:11px;border:1px solid rgba(252,230,201,.2)}
-.lead-card h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--cr);margin-bottom:6px;line-height:1.35}
-.lead-desc{font-size:13px;color:rgba(252,230,201,.72);margin-bottom:18px;line-height:1.7}
+.lead-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--cr);margin-bottom:6px;line-height:1.35}
+.lead-desc{font-size:13px;color:rgba(252,230,201,.72);margin-bottom:20px;line-height:1.7}
 .lead-form{display:flex;flex-direction:column;gap:10px}
-.lead-form input{width:100%;padding:12px 13px;font-size:16px;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(252,230,201,.28);border-radius:var(--rs);background:rgba(252,230,201,.09);color:var(--cr);transition:border-color .15s;min-height:46px}
+.lead-form input{width:100%;padding:12px 14px;font-size:16px;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(252,230,201,.28);border-radius:var(--rs);background:rgba(252,230,201,.09);color:var(--cr);transition:border-color .15s;min-height:48px}
 .lead-form input::placeholder{color:rgba(252,230,201,.42)}
-.lead-form input:focus{outline:none;border-color:rgba(252,230,201,.65)}
+.lead-form input:focus{outline:none;border-color:rgba(252,230,201,.65); background:rgba(252,230,201,.12);}
 .lead-form input.error{border-color:#F5B7B1}
-.lead-submit{background:var(--or);color:white;padding:13px;border-radius:var(--rs);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s}
-.lead-submit:hover{background:var(--orl)}
+.lead-submit{background:var(--or);color:white;padding:14px;border-radius:var(--rs);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;width:100%;min-height:50px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s}
+.lead-submit:hover{background:var(--orl); box-shadow: 0 4px 14px rgba(217,78,15,0.25);}
 .lead-submit:disabled{opacity:.6;cursor:not-allowed}
-.lead-privacy{font-size:11px;color:rgba(252,230,201,.42);text-align:center;margin-top:8px;line-height:1.5}
+.lead-privacy{font-size:11px;color:rgba(252,230,201,.42);text-align:center;margin-top:10px;line-height:1.5}
 .lead-success{display:none;text-align:center;padding:16px 0}
-.success-icon{font-size:28px;margin-bottom:9px}
-.lead-success h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--cr);margin-bottom:5px}
-.share-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center}
-.share-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;border:none;font-family:'DM Sans',sans-serif;transition:background .15s;min-height:40px}
+.success-icon{font-size:32px;margin-bottom:10px; color:var(--cr);}
+.lead-success h4{font-family:'Playfair Display',serif;font-size:20px;color:var(--cr);margin-bottom:6px}
+.share-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;border:none;font-family:'DM Sans',sans-serif;transition:background .15s;min-height:40px}
 .share-wa{background:#25D366;color:white}
-.share-wa:hover{background:#1ebe5a}
+.share-wa:hover{background:#1ebe5a; box-shadow: 0 4px 12px rgba(37,211,102,0.2);}
 .share-copy{background:rgba(252,230,201,.15);color:var(--crm);border:1px solid rgba(252,230,201,.25)}
 .share-copy:hover{background:rgba(252,230,201,.25)}
-.restart-btn{display:block;text-align:center;margin-top:13px;font-size:13px;color:rgba(252,230,201,.45);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'DM Sans',sans-serif;width:100%;min-height:40px}
-.restart-btn:hover{color:rgba(252,230,201,.75)}
+.restart-btn{display:block;text-align:center;margin-top:16px;font-size:13px;color:rgba(252,230,201,.45);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'DM Sans',sans-serif;width:100%;min-height:40px; transition:color 0.2s;}
+.restart-btn:hover{color:rgba(252,230,201,.85)}
 footer{background:var(--m);padding:32px 16px 24px;text-align:center;border-top:1px solid rgba(252,230,201,.1)}
 .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:20px}
 .footer-links a{color:var(--cr);text-decoration:none;font-size:13px; transition: color 0.2s;}
@@ -208,9 +204,8 @@ footer p{font-size:12px;color:rgba(252,230,201,.45);line-height:1.8; margin-bott
 </header>
 
 <div class="hero">
-  <div class="hero-badge"><span class="hero-badge-dot"></span><span data-i18n="h_badge">Free Tool · No sign-up needed</span></div>
-  <div class="hero-tool">Gamma Prompt Generator By ST</div>
-  <h1><span data-i18n="h_h1">Your Gamma Page Prompt,</span> <em data-i18n="h_em">generated.</em></h1>
+  <div class="hero-tool" data-i18n="h_tool">Premium AI App by ST</div>
+  <h1><span data-i18n="h_h1">Your Gamma Prompter,</span> <em data-i18n="h_em">generated.</em></h1>
   <p class="hero-sub" data-i18n="h_sub">Fill in 3 steps about your business, resume, or brand. Get a ready-to-paste prompt for Gamma AI and ChatGPT — no guessing, no blank screen.</p>
   <div class="hero-steps">
     <div class="hero-step active" id="hs1"><span>01</span><span data-i18n="sl1">Business basics</span></div>
@@ -430,7 +425,7 @@ const T={
     hs3t:'Click Generate',hs3d:'Your ChatGPT brief and Gamma AI prompt are generated automatically and ready to copy.',
     hs4t:'Copy, paste, and build',hs4d:'Paste the ChatGPT brief into ChatGPT first to plan your content. Then paste the Gamma prompt into Gamma AI → New → Generate with AI → Page.',
     tip_lbl:'Pro Tip:',tip_txt:'The more details you fill in, the better your generated prompts will be.',
-    h_badge:'Free Tool · No sign-up needed',h_h1:'Your Gamma Page Prompt,',h_em:'generated.',
+    h_tool:'Premium AI App by ST',h_h1:'Your Gamma Prompter,',h_em:'generated.',
     h_sub:'Fill in 3 steps about your business, resume, or brand. Get a ready-to-paste prompt for Gamma AI and ChatGPT — no guessing, no blank screen.',
     sl1:'Business basics',sl2:'Page details',sl3:'Brand & tone',sl4:'Your prompts are ready',
     sp1:'Step 1 of 3 — Business basics',sp2:'Step 2 of 3 — Page details',sp3:'Step 3 of 3 — Brand & tone',
@@ -504,7 +499,7 @@ const T={
     hs3t:'Klik Jana',hs3d:'Brief ChatGPT dan prompt Gamma AI anda dijana secara automatik dan sedia untuk disalin.',
     hs4t:'Salin, tampal, dan bina',hs4d:'Tampalkan brief ChatGPT ke dalam ChatGPT dahulu untuk merancang kandungan anda. Kemudian tampalkan prompt Gamma ke dalam Gamma AI → Baru → Jana dengan AI → Halaman.',
     tip_lbl:'Petua Pro:',tip_txt:'Semakin banyak butiran yang anda isi, semakin baik prompt yang dijana.',
-    h_badge:'Alat Percuma · Tanpa Pendaftaran',h_h1:'Prompt Halaman Gamma Anda,',h_em:'dijana.',
+    h_tool:'Aplikasi AI Premium oleh ST',h_h1:'Prompter Gamma Anda,',h_em:'dijana.',
     h_sub:'Isi 3 langkah tentang perniagaan, resume, atau jenama anda. Dapatkan prompt siap tampal untuk Gamma AI dan ChatGPT — tanpa tekaan, tanpa skrin kosong.',
     sl1:'Asas perniagaan',sl2:'Butiran halaman',sl3:'Jenama & nada',sl4:'Prompt anda sedia',
     sp1:'Langkah 1 daripada 3 — Asas perniagaan',sp2:'Langkah 2 daripada 3 — Butiran halaman',sp3:'Langkah 3 daripada 3 — Jenama & nada',
