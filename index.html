@@ -1,0 +1,628 @@
+<!-- 
+  © 2026 Synthesist Transformation. All Rights Reserved.
+  This code, design, and logic are the intellectual property of Synthesist Transformation.
+  Unauthorized copying, modification, distribution, or reverse engineering is strictly prohibited.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamma Page Prompt Generator — Synthesist Transformation</title>
+<meta name="description" content="Generate a ready-to-paste Gamma AI prompt for your business landing page. Free tool by Synthesist Transformation.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --m:#6B1717;--ml:#8B2020;--md:#4A0F0F;
+  --cr:#FCE6C9;--crl:#FEF3E6;--crm:#F0C898;
+  --or:#D94E0F;--orl:#F27040;
+  --bg:#FAF6F0;--white:#FFFFFF;
+  --txt:#1A0A0A;--txt2:#5C3020;--txt3:#9A7060;
+  --bd:#E8D0B8;--bds:#F0DEC8;
+  --r:12px;--rs:8px;
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--txt);
+  min-height:100vh;
+  /* Disable text selection everywhere for protection */
+  -webkit-user-select: none; 
+  user-select: none;
+}
+
+/* Re-enable text selection ONLY for inputs, textareas, and the prompt results */
+input, textarea, .prompt-text {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* ── HEADER ── */
+.site-header{background:var(--m);padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:36px;height:36px;border-radius:4px;object-fit:cover;flex-shrink:0}
+.brand-name{font-size:13px;font-weight:500;color:var(--cr);letter-spacing:.02em}
+.brand-sub{font-size:11px;color:rgba(252,230,201,.55)}
+.header-link{font-size:12px;color:var(--crm);text-decoration:none;border:1px solid rgba(252,230,201,.25);padding:6px 14px;border-radius:20px;transition:background .15s}
+.header-link:hover{background:rgba(252,230,201,.1)}
+
+/* ── HERO ── */
+.hero{background:var(--m);padding:48px 24px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(252,230,201,.04);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(217,78,15,.06);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(252,230,201,.1);border:1px solid rgba(252,230,201,.2);color:var(--crm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--or);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,44px);color:var(--cr);line-height:1.2;margin-bottom:12px;max-width:560px;margin-left:auto;margin-right:auto}
+.hero h1 em{color:var(--crm);font-style:italic}
+.hero p{font-size:15px;color:rgba(252,230,201,.7);max-width:480px;margin:0 auto 28px;line-height:1.7}
+.hero-steps{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.hero-step{background:rgba(252,230,201,.08);border:1px solid rgba(252,230,201,.15);color:rgba(252,230,201,.7);font-size:12px;padding:5px 14px;border-radius:20px}
+.hero-step span{color:var(--or);margin-right:4px}
+
+/* ── MAIN ── */
+.main{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+
+/* ── PROGRESS ── */
+.progress-wrap{margin-bottom:32px}
+.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--txt3);margin-bottom:8px}
+.progress-meta strong{color:var(--m);font-weight:500}
+.track{height:3px;background:var(--bds);border-radius:2px;overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,var(--m),var(--or));border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+
+/* ── STEP CARD ── */
+.step-card{background:var(--white);border:1px solid var(--bd);border-radius:16px;padding:32px 28px;margin-bottom:16px;display:none;animation:fadeUp .3s ease forwards}
+.step-card.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.step-tag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:10px}
+.step-card h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--m);margin-bottom:6px}
+.step-card>p{font-size:13px;color:var(--txt3);margin-bottom:24px;line-height:1.6}
+
+/* ── FORM ELEMENTS ── */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:540px){.form-grid{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+label{font-size:12px;font-weight:500;color:var(--txt2)}
+label span{color:var(--txt3);font-weight:400;margin-left:4px}
+input[type=text],textarea,select{width:100%;padding:10px 13px;font-size:14px;font-family:'DM Sans',sans-serif;border:1px solid var(--bd);border-radius:var(--rs);background:var(--white);color:var(--txt);transition:border-color .15s,box-shadow .15s;appearance:none}
+input[type=text]:focus,textarea:focus,select:focus{outline:none;border-color:var(--m);box-shadow:0 0 0 3px rgba(107,23,23,.08)}
+textarea{resize:vertical;min-height:80px;line-height:1.6}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239A7060' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+.color-row{display:flex;align-items:center;gap:10px}
+input[type=color]{width:44px;height:40px;border:1px solid var(--bd);border-radius:var(--rs);padding:3px;cursor:pointer;background:var(--white)}
+.color-hex{flex:1}
+
+/* ── TOGGLE PILLS ── */
+.toggle-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.toggle-pill{padding:7px 16px;border-radius:20px;border:1px solid var(--bd);font-size:13px;color:var(--txt2);cursor:pointer;background:var(--white);transition:all .15s;user-select:none}
+.toggle-pill:hover{border-color:var(--m)}
+.toggle-pill.on{background:var(--crl);border-color:var(--crm);color:var(--m);font-weight:500}
+.toggle-pill.or{background:#FFF0EA;border-color:#EFAA90;color:var(--or)}
+
+/* ── NAV BUTTONS ── */
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.btn{padding:11px 24px;border-radius:var(--rs);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;transition:all .15s}
+.btn-back{background:transparent;border:1px solid var(--bd);color:var(--txt3)}
+.btn-back:hover{background:var(--bg);color:var(--txt2)}
+.btn-next{background:var(--m);color:var(--cr);display:flex;align-items:center;gap:6px}
+.btn-next:hover{background:var(--ml)}
+.btn-next:disabled{background:var(--bds);color:var(--txt3);cursor:not-allowed}
+.btn-generate{background:var(--or);color:white;width:100%;padding:14px;font-size:15px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-generate:hover{background:var(--orl)}
+
+/* ── RESULT SECTION ── */
+#result-section{display:none}
+.result-header{text-align:center;margin-bottom:28px}
+.result-header .tick{width:56px;height:56px;background:var(--crl);border:2px solid var(--crm);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px}
+.result-header h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--m);margin-bottom:6px}
+.result-header p{font-size:14px;color:var(--txt3)}
+
+.output-card{background:var(--white);border:1px solid var(--bd);border-radius:16px;margin-bottom:16px;overflow:hidden}
+.output-head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--bds)}
+.output-title{font-size:13px;font-weight:500;color:var(--m);display:flex;align-items:center;gap:8px}
+.output-badge{font-size:10px;background:var(--crl);color:var(--m);padding:2px 8px;border-radius:10px;border:1px solid var(--crm)}
+.copy-btn{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--bd);background:var(--white);color:var(--txt2);cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .15s}
+.copy-btn:hover{background:var(--crl);border-color:var(--crm);color:var(--m)}
+.copy-btn.copied{background:#E6F4EA;border-color:#97C459;color:#3B6D11}
+.output-body{padding:20px}
+.prompt-text{font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.8;color:var(--txt2);white-space:pre-wrap;word-break:break-word;background:var(--bg);border-radius:var(--rs);padding:16px;border:1px solid var(--bds)}
+.prompt-text .ph{color:var(--or);font-weight:500}
+
+.wa-cta{background:var(--m);border-radius:16px;padding:28px;text-align:center;margin-top:24px}
+.wa-cta h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--cr);margin-bottom:6px}
+.wa-cta p{font-size:13px;color:rgba(252,230,201,.7);margin-bottom:18px;line-height:1.6}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;background:var(--or);color:white;padding:12px 24px;border-radius:var(--rs);font-size:14px;font-weight:500;text-decoration:none;transition:background .15s}
+.wa-btn:hover{background:var(--orl)}
+.restart-btn{display:block;text-align:center;margin-top:14px;font-size:13px;color:rgba(252,230,201,.5);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'DM Sans',sans-serif;width:100%}
+.restart-btn:hover{color:var(--crm)}
+
+/* ── FOOTER ── */
+footer{background:var(--m);padding:30px 24px;text-align:center}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin-bottom:12px}
+.footer-links a{color:var(--cr);text-decoration:none;font-size:13px;transition:color .15s}
+.footer-links a:hover{color:var(--white)}
+.footer-links .sep{color:rgba(252,230,201,.3);font-size:12px}
+footer p{font-size:12px;color:rgba(252,230,201,.5);line-height:1.8;margin:0}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://stmy.online/" class="brand">
+    <img src="Synthesist Transformation-logo.png" alt="ST Logo" class="brand-mark" style="display:none;">
+    <div>
+      <div class="brand-name">Synthesist Transformation</div>
+      <div class="brand-sub">Systems, not hustle.</div>
+    </div>
+  </a>
+  <a href="https://stmy.online/" class="header-link">stmy.online ↗</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge"><span class="hero-badge-dot"></span>Free Tool · No sign-up needed</div>
+  <h1>Your Gamma Page Prompt, <em>generated.</em></h1>
+  <p>Fill in 3 quick steps about your business. Get a ready-to-paste prompt for Gamma AI and ChatGPT — no guessing, no blank screen.</p>
+  <div class="hero-steps">
+    <div class="hero-step"><span>01</span>Business basics</div>
+    <div class="hero-step"><span>02</span>Page details</div>
+    <div class="hero-step"><span>03</span>Brand & tone</div>
+    <div class="hero-step"><span>✦</span>Your prompts are ready</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-meta">
+      <strong id="step-label">Step 1 of 3 — Business basics</strong>
+      <span id="pct-label">0%</span>
+    </div>
+    <div class="track"><div class="fill" id="fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- STEP 1 — BUSINESS BASICS -->
+  <div class="step-card active" id="step-1">
+    <div class="step-tag">Step 1 of 3</div>
+    <h2>Tell us about your business</h2>
+    <p>This information goes into both your Gamma prompt and your ChatGPT brief. Take 2 minutes to fill this in properly — it directly affects the quality of your generated prompt.</p>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Business name <span>*</span></label>
+        <input type="text" id="biz-name" placeholder="e.g. Snacksy, Mama Kue, Haircraft Studio">
+      </div>
+      <div class="form-group full">
+        <label>What do you sell or offer? <span>*</span></label>
+        <textarea id="biz-what" placeholder="e.g. I sell homemade dried fruit and nut snacks, packed and delivered within Klang Valley. My best sellers are dried mango and cashew mix." rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Your location <span>* e.g. Puchong, Selangor</span></label>
+        <input type="text" id="biz-location" placeholder="e.g. Puchong, Selangor">
+      </div>
+      <div class="form-group">
+        <label>Business category <span>*</span></label>
+        <select id="biz-cat">
+          <option value="">— Select —</option>
+          <option>Food & Beverage</option>
+          <option>Beauty & Wellness</option>
+          <option>Education & Coaching</option>
+          <option>Professional Services</option>
+          <option>Retail & E-commerce</option>
+          <option>Health & Fitness</option>
+          <option>Events & Photography</option>
+          <option>Handmade & Crafts</option>
+          <option>Finance & Investment</option>
+          <option>Technology & Digital</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Describe your ideal customer <span>*</span></label>
+        <input type="text" id="biz-customer" placeholder="e.g. Health-conscious working adults aged 25–40 in Klang Valley">
+      </div>
+    </div>
+    <div class="nav-row">
+      <span></span>
+      <button class="btn btn-next" onclick="nextStep(1)" id="next-1">Next: Page details →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 — PAGE DETAILS -->
+  <div class="step-card" id="step-2">
+    <div class="step-tag">Step 2 of 3</div>
+    <h2>What should this page do?</h2>
+    <p>Choose your page type and goal carefully — this changes the entire structure Gamma generates for you.</p>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Page type <span>* What are you building?</span></label>
+        <div class="toggle-group" id="page-type-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'page-type')">Sales page <span style="font-size:11px;opacity:.65">— sell directly</span></button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'page-type')">Opt-in / Lead capture <span style="font-size:11px;opacity:.65">— collect leads first</span></button>
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>Main goal — what should the visitor do? <span>*</span></label>
+        <div class="toggle-group" id="goal-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Order via WhatsApp</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Order via Orderla</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Submit their email</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Book a slot or class</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Make a purchase</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Contact me</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>CTA button text <span>* what should the button say?</span></label>
+        <input type="text" id="cta-text" placeholder="e.g. Order Now via WhatsApp">
+      </div>
+      <div class="form-group">
+        <label>Your WhatsApp / website / Orderla link</label>
+        <input type="text" id="cta-link" placeholder="e.g. https://wa.me/601XXXXXXXX">
+      </div>
+      <div class="form-group full">
+        <label>3 key selling points <span>* one per line</span></label>
+        <textarea id="selling-points" placeholder="e.g.&#10;No preservatives — all natural, clean ingredients&#10;Ready stock, same-day delivery in Klang Valley&#10;Resealable packaging, stays fresh for 3 months" rows="4"></textarea>
+      </div>
+      <div class="form-group full">
+        <label>Language <span>*</span></label>
+        <div class="toggle-group" id="lang-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'lang')">English</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'lang')">Bahasa Malaysia</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'lang')">Both (English + BM)</button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn btn-back" onclick="prevStep(2)">← Back</button>
+      <button class="btn btn-next" onclick="nextStep(2)" id="next-2">Next: Brand & tone →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 — BRAND -->
+  <div class="step-card" id="step-3">
+    <div class="step-tag">Step 3 of 3</div>
+    <h2>Brand & tone</h2>
+    <p>This is where your branding package comes in. Refer to the hex codes and fonts you defined before starting this tool.</p>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Brand voice / tone <span>*</span></label>
+        <div class="toggle-group" id="tone-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Warm & friendly</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Professional & direct</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Fun & casual</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Elegant & premium</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Energetic & bold</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Calm & informative</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Primary brand colour</label>
+        <div class="color-row">
+          <input type="color" id="color1" value="#6B1717" oninput="document.getElementById('hex1').value=this.value">
+          <input type="text" id="hex1" class="color-hex" value="#6B1717" placeholder="#000000" oninput="syncColor(this,'color1')">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Accent colour <span>optional</span></label>
+        <div class="color-row">
+          <input type="color" id="color2" value="#D94E0F" oninput="document.getElementById('hex2').value=this.value">
+          <input type="text" id="hex2" class="color-hex" value="#D94E0F" placeholder="#000000" oninput="syncColor(this,'color2')">
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>Font style preference <span>optional</span></label>
+        <div class="toggle-group" id="font-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'font')">Serif (classic, premium)</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'font')">Sans-serif (clean, modern)</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'font')">Bold display (energetic)</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'font')">No preference</button>
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>Any sections to include? <span>select all that apply</span></label>
+        <div class="toggle-group" id="sections-group">
+          <button class="toggle-pill" onclick="toggleMulti(this)">Hero section</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)">About / Our story</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)">Product showcase</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)">Testimonials</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)">FAQ</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)">Contact / Footer</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)">Lead capture form</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)">Pricing table</button>
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>Anything you do NOT want Gamma to invent or include <span>optional</span></label>
+        <input type="text" id="dont-include" placeholder="e.g. Do not include prices. Do not show delivery fees.">
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn btn-back" onclick="prevStep(3)">← Back</button>
+      <button class="btn btn-generate" onclick="generate()" id="btn-gen">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Generate my Gamma prompts
+      </button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="result-section">
+    <div class="result-header">
+      <div class="tick">✦</div>
+      <h2>Your prompts are ready</h2>
+      <p>Copy each prompt and paste it where indicated. Both prompts work together — use ChatGPT first, then Gamma.</p>
+    </div>
+
+    <!-- CHATGPT BRIEF -->
+    <div class="output-card">
+      <div class="output-head">
+        <div class="output-title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6B1717" stroke-width="1.2"/><path d="M8 4v4l3 2" stroke="#6B1717" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Step 1 — Paste into ChatGPT first
+          <span class="output-badge">ChatGPT Brief</span>
+        </div>
+        <button class="copy-btn" id="copy-chatgpt" onclick="copyText('chatgpt-output','copy-chatgpt')">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 4V2.5A1.5 1.5 0 0 0 7.5 1h-5A1.5 1.5 0 0 0 1 2.5v5A1.5 1.5 0 0 0 2.5 9H4" stroke="currentColor" stroke-width="1.2"/></svg>
+          Copy
+        </button>
+      </div>
+      <div class="output-body">
+        <div class="prompt-text" id="chatgpt-output"></div>
+      </div>
+    </div>
+
+    <!-- GAMMA PROMPT -->
+    <div class="output-card">
+      <div class="output-head">
+        <div class="output-title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="3" stroke="#6B1717" stroke-width="1.2"/><path d="M5 8h6M5 5.5h6M5 10.5h4" stroke="#6B1717" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Step 2 — Paste into Gamma AI
+          <span class="output-badge">Gamma Prompt</span>
+        </div>
+        <button class="copy-btn" id="copy-gamma" onclick="copyText('gamma-output','copy-gamma')">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 4V2.5A1.5 1.5 0 0 0 7.5 1h-5A1.5 1.5 0 0 0 1 2.5v5A1.5 1.5 0 0 0 2.5 9H4" stroke="currentColor" stroke-width="1.2"/></svg>
+          Copy
+        </button>
+      </div>
+      <div class="output-body">
+        <div class="prompt-text" id="gamma-output"></div>
+      </div>
+    </div>
+
+    <!-- WA CTA -->
+    <div class="wa-cta">
+      <h3>Want help building the actual page?</h3>
+      <p>Join the Gamma AI class — half day, step by step, you leave with a live page.<br>Or grab the Wizard's Handbook ebook and build it at your own pace.</p>
+      <a class="wa-btn" href="https://stmy.online/once-by-st" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        Join the next live class
+      </a>
+      <button class="restart-btn" onclick="restart()">← Generate a new prompt</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://stmy.online/">Home</a> <span class="sep">|</span>
+    <a href="https://stmy.online/read-do-tools">Read & Do Tools</a> <span class="sep">|</span>
+    <a href="https://stmy.online/once-by-st">Once by ST</a> <span class="sep">|</span>
+    <a href="https://stmy.online/done-for-you">Done-For-You</a> <span class="sep">|</span>
+    <a href="https://stmy.online/st-graduate">ST Graduate</a> <span class="sep">|</span>
+    <a href="https://stmy.online/st-affiliate">ST Affiliate</a>
+  </div>
+  <p>© 2026 Synthesist Transformation Enterprise. Registered with SSM Malaysia.</p>
+</footer>
+
+<script>
+// ── PROTECTION SCRIPTS ─────────────────────────────────────
+
+// Disable right-click menu
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+// Disable common developer tools keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+  // Prevent F12
+  if (e.key === 'F12') {
+    e.preventDefault();
+  }
+  // Prevent Ctrl+Shift+I (Inspect) or Ctrl+Shift+J (Console)
+  if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key.toLowerCase() === 'i' || e.key.toLowerCase() === 'j')) {
+    e.preventDefault();
+  }
+  // Prevent Ctrl+U (View Source)
+  if (e.ctrlKey && (e.key === 'U' || e.key.toLowerCase() === 'u')) {
+    e.preventDefault();
+  }
+});
+
+
+// ── STATE ──────────────────────────────────────────────────
+let state = { step: 1 };
+const sel = id => document.getElementById(id);
+const val = id => (sel(id) ? sel(id).value.trim() : '');
+const getToggle = grp => { const b = document.querySelector(`#${grp}-group .toggle-pill.on`); return b ? b.textContent.trim().replace(/\s+/g,' ') : ''; };
+const getMulti = grp => [...document.querySelectorAll(`#${grp}-group .toggle-pill.on`)].map(b => b.textContent.trim()).join(', ');
+
+// ── TOGGLE ─────────────────────────────────────────────────
+function toggleSingle(btn, grp) {
+  document.querySelectorAll(`#${grp}-group .toggle-pill`).forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+}
+function toggleMulti(btn) { btn.classList.toggle('on'); }
+
+// ── NAV ────────────────────────────────────────────────────
+function nextStep(from) {
+  if (!validateStep(from)) return;
+  sel(`step-${from}`).classList.remove('active');
+  sel(`step-${from+1}`).classList.add('active');
+  state.step = from + 1;
+  updateProgress();
+  window.scrollTo({top: sel('progress-wrap').offsetTop - 20, behavior:'smooth'});
+}
+function prevStep(from) {
+  sel(`step-${from}`).classList.remove('active');
+  sel(`step-${from-1}`).classList.add('active');
+  state.step = from - 1;
+  updateProgress();
+  window.scrollTo({top: sel('progress-wrap').offsetTop - 20, behavior:'smooth'});
+}
+
+function updateProgress() {
+  const s = state.step;
+  const labels = ['Step 1 of 3 — Business basics','Step 2 of 3 — Page details','Step 3 of 3 — Brand & tone'];
+  const pcts = ['33%','66%','100%'];
+  sel('step-label').textContent = labels[s-1];
+  sel('pct-label').textContent = pcts[s-1];
+  sel('fill').style.width = pcts[s-1];
+}
+
+// ── VALIDATE ───────────────────────────────────────────────
+function validateStep(n) {
+  if (n === 1) return val('biz-name') && val('biz-what') && val('biz-location') && val('biz-cat') && val('biz-customer');
+  if (n === 2) return getToggle('page-type') && getToggle('goal') && val('cta-text') && getToggle('lang');
+  return true;
+}
+
+// ── COLOUR SYNC ────────────────────────────────────────────
+function syncColor(input, colorId) {
+  const v = input.value;
+  if (/^#[0-9A-Fa-f]{6}$/.test(v)) sel(colorId).value = v;
+}
+
+// ── GENERATE ───────────────────────────────────────────────
+function generate() {
+  const d = {
+    name: val('biz-name'),
+    what: val('biz-what'),
+    location: val('biz-location'),
+    cat: val('biz-cat'),
+    customer: val('biz-customer'),
+    pageType: getToggle('page-type') || 'Sales page',
+    goal: getToggle('goal') || 'Order via WhatsApp',
+    cta: val('cta-text') || 'Order Now',
+    ctaLink: val('cta-link'),
+    points: val('selling-points'),
+    lang: getToggle('lang') || 'English',
+    tone: getToggle('tone') || 'Warm & friendly',
+    color1: val('hex1') || '#6B1717',
+    color2: val('hex2') || '#D94E0F',
+    font: getToggle('font') || 'No preference',
+    sections: getMulti('sections') || 'Hero section, Product showcase, Call-to-action, Contact / Footer',
+    dontInclude: val('dont-include'),
+  };
+
+  const pointLines = d.points ? d.points.split('\n').filter(l=>l.trim()).map((l,i)=>`  ${i+1}. ${l.trim()}`).join('\n') : '  1. [Add your first selling point]\n  2. [Add your second selling point]\n  3. [Add your third selling point]';
+
+  const chatgptPrompt =
+`I want to create a landing page for my business. Here are the details:
+
+Business name: ${d.name}
+Category: ${d.cat}
+Location: ${d.location}
+What I sell: ${d.what}
+Target customer: ${d.customer}
+
+Page type: ${d.pageType}
+Page goal: ${d.goal}
+Language: ${d.lang}
+Brand tone: ${d.tone}
+
+Please write the following content for my landing page:
+1. A headline (under 10 words, bold and specific)
+2. A subheadline (one sentence that explains what I offer)
+3. Three key selling points with a one-line explanation each:
+${pointLines}
+4. A call-to-action button text (my suggestion: "${d.cta}")
+5. A short closing paragraph that creates urgency or desire
+
+Write everything in my brand tone: ${d.tone}.
+${d.lang !== 'English' ? `Write in ${d.lang}.` : ''}
+Do not invent any prices, delivery fees, specific claims, or details I have not mentioned.
+${d.dontInclude ? `Also exclude: ${d.dontInclude}` : ''}
+
+Return the content clearly labelled by section so I can copy each part separately.`;
+
+  const sectionList = d.sections || 'Hero section, Product showcase, Call-to-action, Contact / Footer';
+  const sectionsFormatted = sectionList.split(',').map((s,i)=>`${i+1}. ${s.trim()}${s.trim()==='Lead capture form' ? ' — include name and email fields' : ''}`).join('\n');
+
+  const gammaPrompt =
+`Create a single-page ${d.pageType.toLowerCase()} for ${d.name}.
+
+${d.name} is a ${d.cat} business based in ${d.location}. We serve ${d.customer}.
+
+What we offer: ${d.what}
+
+Page type: ${d.pageType}
+Page goal: Get visitors to ${d.goal.toLowerCase()}${d.ctaLink ? ` — link: ${d.ctaLink}` : ''}
+
+Page sections to include:
+${sectionsFormatted}
+
+Content to include (paste your ChatGPT output here):
+— Headline: [PASTE FROM CHATGPT]
+— Subheadline: [PASTE FROM CHATGPT]
+— Selling points: 
+${pointLines}
+— CTA button text: ${d.cta}
+
+Brand settings:
+— Primary colour: ${d.color1}
+— Accent colour: ${d.color2}
+— Font style: ${d.font}
+— Tone: ${d.tone}
+— Language: ${d.lang}
+
+Do not invent any prices, specific claims, or details not mentioned above.${d.dontInclude ? `\nAlso exclude: ${d.dontInclude}` : ''}
+Do not add navigation menus or links to other pages.
+Keep the page focused — one goal, one action.`;
+
+  sel('chatgpt-output').textContent = chatgptPrompt;
+  sel('gamma-output').textContent = gammaPrompt;
+
+  // hide steps, show results
+  sel('progress-wrap').style.display = 'none';
+  for(let i=1;i<=3;i++) sel(`step-${i}`).style.display = 'none';
+  sel('result-section').style.display = 'block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── COPY ───────────────────────────────────────────────────
+function copyText(outputId, btnId) {
+  const text = sel(outputId).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = sel(btnId);
+    btn.classList.add('copied');
+    btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied!`;
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 4V2.5A1.5 1.5 0 0 0 7.5 1h-5A1.5 1.5 0 0 0 1 2.5v5A1.5 1.5 0 0 0 2.5 9H4" stroke="currentColor" stroke-width="1.2"/></svg> Copy`;
+    }, 2500);
+  });
+}
+
+// ── RESTART ────────────────────────────────────────────────
+function restart() {
+  sel('result-section').style.display = 'none';
+  sel('progress-wrap').style.display = 'block';
+  for(let i=1;i<=3;i++){sel(`step-${i}`).style.display='';sel(`step-${i}`).classList.remove('active')}
+  sel('step-1').classList.add('active');
+  state.step = 1;
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openLink(u){window.open(u,'_blank')}
+</script>
+</body>
+</html>
