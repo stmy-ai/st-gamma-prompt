@@ -1,658 +1,547 @@
-<!-- 
-  © 2026 Synthesist Transformation. All Rights Reserved.
-  This code, design, and logic are the intellectual property of Synthesist Transformation.
-  Unauthorized copying, modification, distribution, or reverse engineering is strictly prohibited.
--->
+<!-- © 2026 Synthesist Transformation. All Rights Reserved. Unauthorized copying or distribution is prohibited. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PromptKit by ST — Gamma Page Prompt Generator</title>
-<meta name="description" content="Generate a ready-to-paste Gamma AI prompt for your business landing page in 3 steps. Free tool by Synthesist Transformation.">
-<meta property="og:title" content="PromptKit by ST — Gamma Page Prompt Generator">
-<meta property="og:description" content="Generate a ready-to-paste Gamma AI and ChatGPT prompt for your business landing page. Free. No sign-up. 3 steps.">
+<title>Gamma Prompt Generator By ST — Synthesist Transformation</title>
+<meta name="description" content="Generate a ready-to-paste Gamma AI prompt in 3 steps. Free tool by Synthesist Transformation. Alat percuma untuk jana prompt Gamma AI.">
+<meta property="og:title" content="Gamma Prompt Generator By ST">
+<meta property="og:description" content="Generate your Gamma AI page prompt in 3 steps. Free. No sign-up. Works for business, resume, portfolio and more.">
 <meta property="og:url" content="https://stmy-ai.github.io/st-gamma-prompt/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://stmy-ai.github.io/st-gamma-prompt/Synthesist Transformation-logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="Synthesist Transformation-logo.png" type="image/png">
+<meta property="og:image" content="https://stmy-ai.github.io/st-gamma-prompt/logo">
+<link rel="icon" href="logo" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --m:#6B1717;--ml:#8B2020;--md:#4A0F0F;
-  --cr:#FCE6C9;--crl:#FEF3E6;--crm:#F0C898;
-  --or:#D94E0F;--orl:#F27040;
-  --bg:#FAF6F0;--white:#FFFFFF;
-  --txt:#1A0A0A;--txt2:#5C3020;--txt3:#9A7060;
-  --bd:#E8D0B8;--bds:#F0DEC8;
-  --err:#C0392B;--err-bg:#FDF0EE;
-  --ok:#2E7D32;--ok-bg:#E8F5E9;
-  --r:12px;--rs:8px;
-}
+:root{--m:#6B1717;--ml:#8B2020;--cr:#FCE6C9;--crl:#FEF3E6;--crm:#F0C898;--or:#D94E0F;--orl:#F27040;--bg:#FAF6F0;--white:#FFFFFF;--txt:#1A0A0A;--txt2:#5C3020;--txt3:#9A7060;--bd:#E8D0B8;--bds:#F0DEC8;--err:#C0392B;--err-bg:#FDF0EE;--ok:#2E7D32;--ok-bg:#E8F5E9;--rs:10px}
 html{scroll-behavior:smooth}
-body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--bg);color:var(--txt);min-height:100vh;
-  -webkit-user-select:none;user-select:none;
-}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;-webkit-user-select:none;user-select:none}
 input,textarea,.prompt-text{-webkit-user-select:text;user-select:text}
-
-/* HEADER */
-.site-header{background:var(--m);padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand-mark{width:36px;height:36px;border-radius:4px;object-fit:cover;flex-shrink:0}
-.brand-text .brand-name{font-size:13px;font-weight:500;color:var(--cr);letter-spacing:.02em}
-.brand-text .brand-sub{font-size:11px;color:rgba(252,230,201,.55)}
-.header-right{display:flex;align-items:center;gap:12px}
-.tool-name-badge{font-size:11px;font-weight:500;background:var(--or);color:white;padding:4px 10px;border-radius:20px;letter-spacing:.04em}
-.header-link{font-size:12px;color:var(--crm);text-decoration:none;border:1px solid rgba(252,230,201,.25);padding:6px 14px;border-radius:20px;transition:background .15s}
-.header-link:hover{background:rgba(252,230,201,.1)}
-@media(max-width:480px){.header-link{display:none}}
-
-/* HERO */
-.hero{background:var(--m);padding:48px 24px 56px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(252,230,201,.04);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(217,78,15,.06);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(252,230,201,.1);border:1px solid rgba(252,230,201,.2);color:var(--crm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.site-header{background:var(--m);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;position:sticky;top:0;z-index:100}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.brand-mark{width:30px;height:30px;border-radius:4px;object-fit:cover}
+.brand-name{font-size:12px;font-weight:500;color:var(--cr);line-height:1.2}
+.brand-sub{font-size:10px;color:rgba(252,230,201,.5)}
+.header-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.how-btn{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--cr);background:rgba(252,230,201,.12);border:1px solid rgba(252,230,201,.3);padding:7px 12px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s;white-space:nowrap;min-height:36px}
+.how-btn:hover{background:rgba(252,230,201,.22)}
+.lang-toggle{display:flex;background:rgba(0,0,0,.25);border-radius:20px;padding:2px}
+.lang-btn{padding:5px 10px;border-radius:18px;font-size:11px;font-weight:500;color:rgba(252,230,201,.6);cursor:pointer;border:none;background:transparent;font-family:'DM Sans',sans-serif;transition:all .15s;white-space:nowrap;min-height:30px}
+.lang-btn.active{background:var(--cr);color:var(--m)}
+.header-site-link{font-size:11px;color:var(--crm);text-decoration:none;border:1px solid rgba(252,230,201,.2);padding:6px 10px;border-radius:20px;white-space:nowrap}
+@media(max-width:480px){.brand-sub,.header-site-link{display:none}.how-btn .how-txt{display:none}}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,10,10,.75);z-index:1000;padding:16px;overflow-y:auto;align-items:flex-start;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--white);border-radius:16px;max-width:520px;width:100%;margin:auto;overflow:hidden;animation:fadeUp .25s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.modal-head{background:var(--m);padding:18px 20px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.modal-head h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--cr)}
+.modal-head p{font-size:12px;color:rgba(252,230,201,.6);margin-top:3px}
+.modal-close{background:rgba(252,230,201,.15);border:none;color:var(--cr);width:30px;height:30px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;font-family:serif}
+.modal-body{padding:20px}
+.how-step{display:flex;gap:12px;margin-bottom:18px}
+.how-step:last-child{margin-bottom:0}
+.how-num{width:34px;height:34px;border-radius:50%;background:var(--crl);border:2px solid var(--crm);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:var(--m);font-weight:700;flex-shrink:0}
+.how-content h3{font-size:14px;font-weight:500;color:var(--m);margin-bottom:3px}
+.how-content p{font-size:13px;color:var(--txt3);line-height:1.6}
+.modal-tip{background:var(--crl);border:1px solid var(--crm);border-radius:var(--rs);padding:12px 14px;margin-top:18px;font-size:13px;color:var(--m);line-height:1.6}
+.hero{background:var(--m);padding:36px 16px 44px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(252,230,201,.05);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(252,230,201,.18);border:1px solid rgba(252,230,201,.4);color:var(--cr);font-size:11px;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px;border-radius:20px;margin-bottom:14px;font-weight:500}
 .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--or);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero-tool-name{font-family:'Playfair Display',serif;font-size:13px;color:var(--crm);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;font-style:italic}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,44px);color:var(--cr);line-height:1.2;margin-bottom:12px;max-width:560px;margin-left:auto;margin-right:auto}
+.hero-tool{font-family:'Playfair Display',serif;font-size:11px;color:var(--crm);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;font-style:italic;opacity:.9}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,40px);color:var(--cr);line-height:1.25;margin-bottom:12px}
 .hero h1 em{color:var(--crm);font-style:italic}
-.hero p{font-size:15px;color:rgba(252,230,201,.7);max-width:480px;margin:0 auto 28px;line-height:1.7}
-.hero-steps{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.hero-step{background:rgba(252,230,201,.08);border:1px solid rgba(252,230,201,.15);color:rgba(252,230,201,.7);font-size:12px;padding:5px 14px;border-radius:20px}
-.hero-step span{color:var(--or);margin-right:4px}
-
-/* MAIN */
-.main{max-width:720px;margin:0 auto;padding:40px 20px 80px}
-
-/* PROGRESS */
-.progress-wrap{margin-bottom:32px}
-.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--txt3);margin-bottom:8px}
+.hero-sub{font-size:14px;color:rgba(252,230,201,.82);max-width:440px;margin:0 auto 22px;line-height:1.7}
+.hero-steps{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}
+.hero-step{background:rgba(252,230,201,.2);border:1px solid rgba(252,230,201,.45);color:var(--cr);font-size:12px;font-weight:500;padding:6px 13px;border-radius:20px;letter-spacing:.01em}
+.hero-step span{color:var(--or);margin-right:4px;font-weight:600}
+.main{max-width:660px;margin:0 auto;padding:28px 14px 80px}
+.progress-wrap{margin-bottom:24px}
+.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--txt3);margin-bottom:7px}
 .progress-meta strong{color:var(--m);font-weight:500}
 .track{height:3px;background:var(--bds);border-radius:2px;overflow:hidden}
 .fill{height:100%;background:linear-gradient(90deg,var(--m),var(--or));border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
-
-/* STEP CARD */
-.step-card{background:var(--white);border:1px solid var(--bd);border-radius:16px;padding:32px 28px;margin-bottom:16px;display:none;animation:fadeUp .3s ease forwards}
+.step-card{background:var(--white);border:1px solid var(--bd);border-radius:14px;padding:22px 18px;margin-bottom:12px;display:none;animation:fadeUp .3s ease forwards}
 .step-card.active{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.step-tag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:10px}
-.step-card h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--m);margin-bottom:6px}
-.step-card>p{font-size:13px;color:var(--txt3);margin-bottom:24px;line-height:1.6}
-
-/* FORM */
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:540px){.form-grid{grid-template-columns:1fr}}
-.form-group{display:flex;flex-direction:column;gap:6px}
+.step-tag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:7px}
+.step-card h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--m);margin-bottom:5px}
+.step-intro{font-size:13px;color:var(--txt3);margin-bottom:18px;line-height:1.6}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+@media(max-width:480px){.form-grid{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:5px}
 .form-group.full{grid-column:1/-1}
-label{font-size:12px;font-weight:500;color:var(--txt2)}
-label span{color:var(--txt3);font-weight:400;margin-left:4px}
-input[type=text],input[type=email],input[type=tel],textarea,select{
-  width:100%;padding:10px 13px;font-size:14px;font-family:'DM Sans',sans-serif;
-  border:1.5px solid var(--bd);border-radius:var(--rs);background:var(--white);
-  color:var(--txt);transition:border-color .15s,box-shadow .15s;appearance:none;
-}
+label{font-size:12px;font-weight:500;color:var(--txt2);line-height:1.4}
+label span{color:var(--txt3);font-weight:400;margin-left:3px}
+input[type=text],input[type=email],input[type=tel],textarea,select{width:100%;padding:11px 12px;font-size:16px;font-family:'DM Sans',sans-serif;border:1.5px solid var(--bd);border-radius:var(--rs);background:var(--white);color:var(--txt);transition:border-color .15s,box-shadow .15s;appearance:none;-webkit-appearance:none}
+@media(min-width:480px){input[type=text],input[type=email],input[type=tel],textarea,select{font-size:14px}}
 input:focus,textarea:focus,select:focus{outline:none;border-color:var(--m);box-shadow:0 0 0 3px rgba(107,23,23,.08)}
-input.error,textarea.error,select.error{border-color:var(--err);background:var(--err-bg)}
-textarea{resize:vertical;min-height:80px;line-height:1.6}
-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239A7060' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
-.color-row{display:flex;align-items:center;gap:10px}
-input[type=color]{width:44px;height:40px;border:1px solid var(--bd);border-radius:var(--rs);padding:3px;cursor:pointer;background:var(--white)}
+input.error,textarea.error,select.error{border-color:var(--err)!important;background:var(--err-bg)}
+textarea{resize:vertical;min-height:78px;line-height:1.6}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239A7060' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:30px;cursor:pointer}
+.color-row{display:flex;align-items:center;gap:9px}
+input[type=color]{width:42px;height:42px;border:1.5px solid var(--bd);border-radius:var(--rs);padding:3px;cursor:pointer;background:var(--white);flex-shrink:0}
 .color-hex{flex:1}
-
-/* VALIDATION ERROR */
-.field-error{font-size:11px;color:var(--err);margin-top:2px;display:none}
-.field-error.show{display:block}
-.step-error{background:var(--err-bg);border:1px solid #F5B7B1;border-radius:var(--rs);padding:10px 14px;font-size:13px;color:var(--err);margin-bottom:16px;display:none;align-items:center;gap:8px}
-.step-error.show{display:flex}
-@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
-.shake{animation:shake .35s ease}
-
-/* TOGGLE PILLS */
-.toggle-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
-.toggle-pill{padding:7px 16px;border-radius:20px;border:1px solid var(--bd);font-size:13px;color:var(--txt2);cursor:pointer;background:var(--white);transition:all .15s;user-select:none}
-.toggle-pill:hover{border-color:var(--m)}
+.toggle-group{display:flex;gap:7px;flex-wrap:wrap;margin-top:4px}
+.toggle-pill{padding:9px 15px;border-radius:20px;border:1.5px solid var(--bd);font-size:13px;color:var(--txt2);cursor:pointer;background:var(--white);transition:all .15s;user-select:none;font-family:'DM Sans',sans-serif;min-height:42px;display:inline-flex;align-items:center}
+.toggle-pill:hover{border-color:var(--m);background:var(--crl)}
 .toggle-pill.on{background:var(--crl);border-color:var(--crm);color:var(--m);font-weight:500}
-.toggle-group.error .toggle-pill{border-color:var(--err)}
-
-/* NAV BUTTONS */
-.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
-.btn{padding:11px 24px;border-radius:var(--rs);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;transition:all .15s}
-.btn-back{background:transparent;border:1px solid var(--bd);color:var(--txt3)}
-.btn-back:hover{background:var(--bg);color:var(--txt2)}
-.btn-next{background:var(--m);color:var(--cr);display:flex;align-items:center;gap:6px}
+.toggle-group.tg-error .toggle-pill{border-color:var(--err)}
+.step-error{background:var(--err-bg);border:1px solid #F5C6C0;border-radius:var(--rs);padding:10px 13px;font-size:13px;color:var(--err);margin-bottom:13px;display:none;align-items:center;gap:8px}
+.step-error.show{display:flex}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.shake{animation:shake .35s ease}
+.form-divider{grid-column:1/-1;height:1px;background:var(--bds);margin:3px 0}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px}
+.btn{padding:11px 20px;border-radius:var(--rs);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;transition:all .15s;min-height:44px}
+.btn-back{background:transparent;border:1.5px solid var(--bd);color:var(--txt3)}
+.btn-back:hover{background:var(--bg)}
+.btn-next{background:var(--m);color:var(--cr)}
 .btn-next:hover{background:var(--ml)}
-.btn-generate{background:var(--or);color:white;width:100%;padding:14px;font-size:15px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;border:none;transition:background .15s}
+.btn-generate{background:var(--or);color:white;width:100%;padding:14px;font-size:15px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;border:none;min-height:50px;transition:background .15s}
 .btn-generate:hover{background:var(--orl)}
-
-/* RESULT */
 #result-section{display:none}
-.result-header{text-align:center;margin-bottom:28px}
-.result-header .tick{width:56px;height:56px;background:var(--crl);border:2px solid var(--crm);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px}
-.result-header h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--m);margin-bottom:6px}
-.result-header p{font-size:14px;color:var(--txt3)}
-.output-card{background:var(--white);border:1px solid var(--bd);border-radius:16px;margin-bottom:16px;overflow:hidden}
-.output-head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--bds)}
-.output-title{font-size:13px;font-weight:500;color:var(--m);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.output-badge{font-size:10px;background:var(--crl);color:var(--m);padding:2px 8px;border-radius:10px;border:1px solid var(--crm)}
-.copy-btn{font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--bd);background:var(--white);color:var(--txt2);cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .15s;flex-shrink:0}
+.result-header{text-align:center;margin-bottom:22px}
+.result-tick{width:50px;height:50px;background:var(--crl);border:2px solid var(--crm);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 11px}
+.result-header h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--m);margin-bottom:4px}
+.result-header p{font-size:13px;color:var(--txt3)}
+.output-card{background:var(--white);border:1px solid var(--bd);border-radius:13px;margin-bottom:12px;overflow:hidden}
+.output-head{display:flex;align-items:center;justify-content:space-between;padding:11px 15px;border-bottom:1px solid var(--bds);gap:8px;flex-wrap:wrap}
+.output-title{font-size:13px;font-weight:500;color:var(--m);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.output-badge{font-size:10px;background:var(--crl);color:var(--m);padding:2px 8px;border-radius:10px;border:1px solid var(--crm);white-space:nowrap}
+.copy-btn{font-size:12px;font-weight:500;padding:8px 13px;border-radius:20px;border:1.5px solid var(--bd);background:var(--white);color:var(--txt2);cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all .15s;white-space:nowrap;min-height:36px}
 .copy-btn:hover{background:var(--crl);border-color:var(--crm);color:var(--m)}
 .copy-btn.copied{background:var(--ok-bg);border-color:#81C784;color:var(--ok)}
-.output-body{padding:20px}
-.prompt-text{font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.8;color:var(--txt2);white-space:pre-wrap;word-break:break-word;background:var(--bg);border-radius:var(--rs);padding:16px;border:1px solid var(--bds)}
-
-/* LEAD CAPTURE */
-.lead-card{background:var(--m);border-radius:16px;padding:32px 28px;margin-top:24px}
-.lead-card-inner{max-width:460px;margin:0 auto}
-.lead-badge{display:inline-block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(252,230,201,.15);color:var(--crm);padding:4px 12px;border-radius:20px;margin-bottom:14px}
-.lead-card h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--cr);margin-bottom:6px;line-height:1.3}
-.lead-card .lead-desc{font-size:13px;color:rgba(252,230,201,.7);margin-bottom:22px;line-height:1.7}
-.lead-form{display:flex;flex-direction:column;gap:12px}
-.lead-form input{
-  width:100%;padding:11px 14px;font-size:14px;font-family:'DM Sans',sans-serif;
-  border:1.5px solid rgba(252,230,201,.25);border-radius:var(--rs);
-  background:rgba(252,230,201,.08);color:var(--cr);
-  transition:border-color .15s;
-}
-.lead-form input::placeholder{color:rgba(252,230,201,.4)}
-.lead-form input:focus{outline:none;border-color:rgba(252,230,201,.6);background:rgba(252,230,201,.12)}
-.lead-form input.error{border-color:#F5B7B1;background:rgba(192,57,43,.15)}
-.lead-submit{background:var(--or);color:white;padding:13px;border-radius:var(--rs);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;width:100%;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.output-body{padding:14px}
+.prompt-text{font-family:'DM Mono',monospace;font-size:12px;line-height:1.8;color:var(--txt2);white-space:pre-wrap;word-break:break-word;background:var(--bg);border-radius:var(--rs);padding:13px;border:1px solid var(--bds)}
+.lead-card{background:var(--m);border-radius:14px;padding:24px 18px;margin-top:18px}
+.lead-inner{max-width:420px;margin:0 auto}
+.lead-badge{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:rgba(252,230,201,.15);color:var(--crm);padding:4px 11px;border-radius:20px;margin-bottom:11px;border:1px solid rgba(252,230,201,.2)}
+.lead-card h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--cr);margin-bottom:6px;line-height:1.35}
+.lead-desc{font-size:13px;color:rgba(252,230,201,.72);margin-bottom:18px;line-height:1.7}
+.lead-form{display:flex;flex-direction:column;gap:10px}
+.lead-form input{width:100%;padding:12px 13px;font-size:16px;font-family:'DM Sans',sans-serif;border:1.5px solid rgba(252,230,201,.28);border-radius:var(--rs);background:rgba(252,230,201,.09);color:var(--cr);transition:border-color .15s;min-height:46px}
+.lead-form input::placeholder{color:rgba(252,230,201,.42)}
+.lead-form input:focus{outline:none;border-color:rgba(252,230,201,.65)}
+.lead-form input.error{border-color:#F5B7B1}
+.lead-submit{background:var(--or);color:white;padding:13px;border-radius:var(--rs);font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s}
 .lead-submit:hover{background:var(--orl)}
-.lead-privacy{font-size:11px;color:rgba(252,230,201,.4);text-align:center;margin-top:8px;line-height:1.5}
-.lead-success{display:none;text-align:center;padding:20px 0}
-.lead-success .success-icon{font-size:32px;margin-bottom:10px}
-.lead-success h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--cr);margin-bottom:6px}
-.lead-success p{font-size:13px;color:rgba(252,230,201,.7);line-height:1.6}
-
-.share-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap}
-.share-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;border:none;font-family:'DM Sans',sans-serif;transition:background .15s}
+.lead-submit:disabled{opacity:.6;cursor:not-allowed}
+.lead-privacy{font-size:11px;color:rgba(252,230,201,.42);text-align:center;margin-top:8px;line-height:1.5}
+.lead-success{display:none;text-align:center;padding:16px 0}
+.success-icon{font-size:28px;margin-bottom:9px}
+.lead-success h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--cr);margin-bottom:5px}
+.share-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;border:none;font-family:'DM Sans',sans-serif;transition:background .15s;min-height:40px}
 .share-wa{background:#25D366;color:white}
 .share-wa:hover{background:#1ebe5a}
-.share-copy-link{background:rgba(252,230,201,.15);color:var(--crm);border:1px solid rgba(252,230,201,.25)}
-.share-copy-link:hover{background:rgba(252,230,201,.25)}
-
-.restart-btn{display:block;text-align:center;margin-top:16px;font-size:13px;color:rgba(252,230,201,.4);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'DM Sans',sans-serif;width:100%}
-.restart-btn:hover{color:rgba(252,230,201,.7)}
-
-/* FOOTER */
-footer{background:var(--m);padding:30px 24px;text-align:center;border-top:1px solid rgba(252,230,201,.1)}
-.footer-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin-bottom:12px}
-.footer-links a{color:var(--cr);text-decoration:none;font-size:13px;transition:color .15s}
-.footer-links a:hover{color:var(--white)}
+.share-copy{background:rgba(252,230,201,.15);color:var(--crm);border:1px solid rgba(252,230,201,.25)}
+.share-copy:hover{background:rgba(252,230,201,.25)}
+.restart-btn{display:block;text-align:center;margin-top:13px;font-size:13px;color:rgba(252,230,201,.45);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'DM Sans',sans-serif;width:100%;min-height:40px}
+.restart-btn:hover{color:rgba(252,230,201,.75)}
+footer{background:var(--m);padding:26px 16px;text-align:center;border-top:1px solid rgba(252,230,201,.1)}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:10px}
+.footer-links a{color:var(--cr);text-decoration:none;font-size:13px}
+.footer-links a:hover{color:white}
 .footer-links .sep{color:rgba(252,230,201,.3);font-size:12px}
-footer p{font-size:12px;color:rgba(252,230,201,.5);line-height:1.8}
+footer p{font-size:12px;color:rgba(252,230,201,.45);line-height:1.8}
 </style>
 </head>
 <body>
 
+<div class="modal-overlay" id="howModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div><h2 data-i18n="how_title">How to Use</h2><p data-i18n="how_sub">Generate your Gamma prompt in 4 simple steps</p></div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="how-step"><div class="how-num">1</div><div class="how-content"><h3 data-i18n="hs1t">Choose what you are building</h3><p data-i18n="hs1d">Select your page type — business, resume, freelancer portfolio, personal brand, or event. This shapes the prompts generated for you.</p></div></div>
+      <div class="how-step"><div class="how-num">2</div><div class="how-content"><h3 data-i18n="hs2t">Fill in 3 quick sections</h3><p data-i18n="hs2d">Basics, page details and goals, then brand colours and tone. Be specific — the more detail, the better the prompts.</p></div></div>
+      <div class="how-step"><div class="how-num">3</div><div class="how-content"><h3 data-i18n="hs3t">Click Generate</h3><p data-i18n="hs3d">Your ChatGPT brief and Gamma AI prompt are generated automatically and ready to copy.</p></div></div>
+      <div class="how-step"><div class="how-num">4</div><div class="how-content"><h3 data-i18n="hs4t">Copy, paste, and build</h3><p data-i18n="hs4d">Paste the ChatGPT brief into ChatGPT first to plan your content. Then paste the Gamma prompt into Gamma AI → New → Generate with AI → Page.</p></div></div>
+      <div class="modal-tip"><strong data-i18n="tip_lbl">Pro Tip:</strong> <span data-i18n="tip_txt">The more details you fill in, the better your generated prompts will be.</span></div>
+    </div>
+  </div>
+</div>
+
 <header class="site-header">
-  <a href="https://stmy.online/" class="brand">
-    <img src="Synthesist Transformation-logo.png" alt="ST Logo" class="brand-mark">
-    <div class="brand-text">
-      <div class="brand-name">Synthesist Transformation</div>
-      <div class="brand-sub">Systems, not hustle.</div>
-    </div>
-  </a>
-  <div class="header-right">
-    <span class="tool-name-badge">PromptKit</span>
-    <a href="https://stmy.online/" class="header-link">stmy.online ↗</a>
-  </div>
+  <a href="https://stmy.online/" class="brand">
+    <img src="logo" alt="ST" class="brand-mark">
+    <div><div class="brand-name">Synthesist Transformation</div><div class="brand-sub">Systems, not hustle.</div></div>
+  </a>
+  <div class="header-right">
+    <button class="how-btn" onclick="document.getElementById('howModal').classList.add('open')">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 6.5v3.5M7 4.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span class="how-txt" data-i18n="how_btn">How to Use</span>
+    </button>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-bm" onclick="setLang('bm')">BM</button>
+    </div>
+    <a href="https://stmy.online/" class="header-site-link">stmy.online ↗</a>
+  </div>
 </header>
 
 <div class="hero">
-  <div class="hero-badge"><span class="hero-badge-dot"></span>Free Tool · No sign-up needed</div>
-  <div class="hero-tool-name">PromptKit by ST</div>
-  <h1>Your Gamma Page Prompt, <em>generated.</em></h1>
-  <p>Fill in 3 quick steps about your business. Get a ready-to-paste prompt for Gamma AI and ChatGPT — no guessing, no blank screen.</p>
-  <div class="hero-steps">
-    <div class="hero-step"><span>01</span>Business basics</div>
-    <div class="hero-step"><span>02</span>Page details</div>
-    <div class="hero-step"><span>03</span>Brand & tone</div>
-    <div class="hero-step"><span>✦</span>Your prompts are ready</div>
-  </div>
+  <div class="hero-badge"><span class="hero-badge-dot"></span><span data-i18n="h_badge">Free Tool · No sign-up needed</span></div>
+  <div class="hero-tool">Gamma Prompt Generator By ST</div>
+  <h1><span data-i18n="h_h1">Your Gamma Page Prompt,</span> <em data-i18n="h_em">generated.</em></h1>
+  <p class="hero-sub" data-i18n="h_sub">Fill in 3 steps about your business, resume, or brand. Get a ready-to-paste prompt for Gamma AI and ChatGPT — no guessing, no blank screen.</p>
+  <div class="hero-steps">
+    <div class="hero-step"><span>01</span><span data-i18n="sl1">Business basics</span></div>
+    <div class="hero-step"><span>02</span><span data-i18n="sl2">Page details</span></div>
+    <div class="hero-step"><span>03</span><span data-i18n="sl3">Brand & tone</span></div>
+    <div class="hero-step"><span>✦</span><span data-i18n="sl4">Your prompts are ready</span></div>
+  </div>
 </div>
 
 <div class="main">
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-meta"><strong id="step-label"></strong><span id="pct-label">33%</span></div>
+    <div class="track"><div class="fill" id="fill" style="width:33%"></div></div>
+  </div>
 
-  <div class="progress-wrap" id="progress-wrap">
-    <div class="progress-meta">
-      <strong id="step-label">Step 1 of 3 — Business basics</strong>
-      <span id="pct-label">33%</span>
-    </div>
-    <div class="track"><div class="fill" id="fill" style="width:33%"></div></div>
-  </div>
+  <div class="step-card active" id="step-1">
+    <div class="step-tag" data-i18n="s1tag">Step 1 of 3</div>
+    <h2 data-i18n="s1h">Tell us about yourself or your business</h2>
+    <p class="step-intro" data-i18n="s1p">This goes into your Gamma prompt and ChatGPT brief. Be specific for better results.</p>
+    <div class="step-error" id="err-1"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#C0392B" stroke-width="1.3"/><path d="M7.5 4.5v3M7.5 10h.01" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="e1">Please fill in all required fields before continuing.</span></div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label data-i18n="uc_lbl">What are you building? *</label>
+        <div class="toggle-group" id="usecase-group">
+          <button class="toggle-pill on" onclick="toggleSingle(this,'usecase');updateUC()" data-uc="biz" data-i18n-pill="uc0">Business / Product page</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'usecase');updateUC()" data-uc="resume" data-i18n-pill="uc1">Resume / CV page</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'usecase');updateUC()" data-uc="free" data-i18n-pill="uc2">Freelancer portfolio</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'usecase');updateUC()" data-uc="brand" data-i18n-pill="uc3">Personal brand</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'usecase');updateUC()" data-uc="event" data-i18n-pill="uc4">Event page</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'usecase');updateUC()" data-uc="other" data-i18n-pill="uc5">Other</button>
+        </div>
+      </div>
+      <div class="form-divider"></div>
+      <div class="form-group full"><label><span id="ln-text" data-i18n="ln_biz">Business name</span> *</label><input type="text" id="biz-name" placeholder="e.g. Snacksy, Aishah Razak, HairCraft Studio"></div>
+      <div class="form-group full"><label><span id="lw-text" data-i18n="lw_biz">What do you sell or offer?</span> *</label><textarea id="biz-what" rows="3" placeholder="e.g. I sell homemade dried fruit snacks, delivered within Klang Valley."></textarea></div>
+      <div class="form-group"><label data-i18n="l_loc">Your location * e.g. Puchong, Selangor</label><input type="text" id="biz-location" placeholder="e.g. Puchong, Selangor"></div>
+      <div class="form-group"><label data-i18n="l_cat">Category *</label>
+        <select id="biz-cat">
+          <option value="" data-i18n="c0">— Select —</option>
+          <option data-i18n="c1">Food & Beverage</option><option data-i18n="c2">Beauty & Wellness</option>
+          <option data-i18n="c3">Education & Coaching</option><option data-i18n="c4">Professional Services</option>
+          <option data-i18n="c5">Retail & E-commerce</option><option data-i18n="c6">Health & Fitness</option>
+          <option data-i18n="c7">Events & Photography</option><option data-i18n="c8">Handmade & Crafts</option>
+          <option data-i18n="c9">Finance & Investment</option><option data-i18n="c10">Technology & Digital</option>
+          <option data-i18n="c11">Creative & Design</option><option data-i18n="c12">Other</option>
+        </select>
+      </div>
+      <div class="form-group full"><label><span id="lc-text" data-i18n="lc_biz">Describe your ideal customer or audience</span> *</label><input type="text" id="biz-customer" placeholder="e.g. Health-conscious working adults aged 25-40 in KL"></div>
+    </div>
+    <div class="nav-row"><span></span><button class="btn btn-next" onclick="nextStep(1)" id="next-1" data-i18n="bn1">Next: Page details →</button></div>
+  </div>
 
-  <!-- STEP 1 -->
-  <div class="step-card active" id="step-1">
-    <div class="step-tag">Step 1 of 3</div>
-    <h2>Tell us about your business</h2>
-    <p>This information goes into both your Gamma prompt and your ChatGPT brief. Fill this in properly — it directly affects the quality of your generated prompt.</p>
-    <div class="step-error" id="err-1">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#C0392B" stroke-width="1.5"/><path d="M8 5v3M8 11h.01" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Please fill in all required fields before continuing.
-    </div>
-    <div class="form-grid">
-      <div class="form-group full">
-        <label>Business name <span>*</span></label>
-        <input type="text" id="biz-name" placeholder="e.g. Snacksy, Mama Kue, Haircraft Studio">
-      </div>
-      <div class="form-group full">
-        <label>What do you sell or offer? <span>*</span></label>
-        <textarea id="biz-what" placeholder="e.g. I sell homemade dried fruit and nut snacks, packed and delivered within Klang Valley. My best sellers are dried mango and cashew mix." rows="3"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Your location <span>* e.g. Puchong, Selangor</span></label>
-        <input type="text" id="biz-location" placeholder="e.g. Puchong, Selangor">
-      </div>
-      <div class="form-group">
-        <label>Business category <span>*</span></label>
-        <select id="biz-cat">
-          <option value="">— Select —</option>
-          <option>Food & Beverage</option>
-          <option>Beauty & Wellness</option>
-          <option>Education & Coaching</option>
-          <option>Professional Services</option>
-          <option>Retail & E-commerce</option>
-          <option>Health & Fitness</option>
-          <option>Events & Photography</option>
-          <option>Handmade & Crafts</option>
-          <option>Finance & Investment</option>
-          <option>Technology & Digital</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label>Describe your ideal customer <span>*</span></label>
-        <input type="text" id="biz-customer" placeholder="e.g. Health-conscious working adults aged 25–40 in Klang Valley">
-      </div>
-    </div>
-    <div class="nav-row">
-      <span></span>
-      <button class="btn btn-next" onclick="nextStep(1)" id="next-1">Next: Page details →</button>
-    </div>
-  </div>
+  <div class="step-card" id="step-2">
+    <div class="step-tag" data-i18n="s2tag">Step 2 of 3</div>
+    <h2 data-i18n="s2h">What should this page do?</h2>
+    <p class="step-intro" data-i18n="s2p">Your page type and goal shape the entire structure Gamma builds. Choose carefully.</p>
+    <div class="step-error" id="err-2"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#C0392B" stroke-width="1.3"/><path d="M7.5 4.5v3M7.5 10h.01" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="e2">Please select page type, goal, language, and fill in the CTA text.</span></div>
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="l_pt">Page type * What are you building?</label>
+        <div class="toggle-group" id="page-type-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'page-type')" data-i18n-pill="pt0">Sales page — sell directly</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'page-type')" data-i18n-pill="pt1">Opt-in / Lead capture — collect contacts first</button>
+        </div>
+      </div>
+      <div class="form-group full"><label data-i18n="l_gl">Main goal — what should the visitor do? *</label>
+        <div class="toggle-group" id="goal-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')" data-i18n-pill="g0">Order via WhatsApp</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')" data-i18n-pill="g1">Order via Orderla</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')" data-i18n-pill="g2">Submit their email</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')" data-i18n-pill="g3">Book a slot or class</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')" data-i18n-pill="g4">Make a purchase</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')" data-i18n-pill="g5">Contact me</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')" data-i18n-pill="g6">Hire me / Get in touch</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'goal')" data-i18n-pill="g7">RSVP / Register</button>
+        </div>
+      </div>
+      <div class="form-group"><label data-i18n="l_cta">CTA button text * what should it say?</label><input type="text" id="cta-text" placeholder="e.g. Order Now via WhatsApp"></div>
+      <div class="form-group"><label data-i18n="l_link">WhatsApp / website link <span>optional</span></label><input type="text" id="cta-link" placeholder="e.g. https://wa.me/601XXXXXXXX"></div>
+      <div class="form-group full"><label><span id="lp-text" data-i18n="lp_biz">3 key selling points or highlights</span> * <span>one per line</span></label><textarea id="selling-points" rows="4" placeholder="e.g.&#10;No preservatives — all natural&#10;Same-day delivery Klang Valley&#10;Stays fresh 3 months"></textarea></div>
+      <div class="form-group full"><label data-i18n="l_lang">Language *</label>
+        <div class="toggle-group" id="lang-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'lang')" data-i18n-pill="lg0">English</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'lang')" data-i18n-pill="lg1">Bahasa Malaysia</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'lang')" data-i18n-pill="lg2">Both (English + BM)</button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-row"><button class="btn btn-back" onclick="prevStep(2)" data-i18n="bback">← Back</button><button class="btn btn-next" onclick="nextStep(2)" id="next-2" data-i18n="bn2">Next: Brand & tone →</button></div>
+  </div>
 
-  <!-- STEP 2 -->
-  <div class="step-card" id="step-2">
-    <div class="step-tag">Step 2 of 3</div>
-    <h2>What should this page do?</h2>
-    <p>Choose your page type and goal carefully — this changes the entire structure Gamma generates for you.</p>
-    <div class="step-error" id="err-2">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#C0392B" stroke-width="1.5"/><path d="M8 5v3M8 11h.01" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Please select your page type, goal, language, and fill in the CTA button text.
-    </div>
-    <div class="form-grid">
-      <div class="form-group full">
-        <label>Page type <span>* What are you building?</span></label>
-        <div class="toggle-group" id="page-type-group">
-          <button class="toggle-pill" onclick="toggleSingle(this,'page-type')">Sales page <span style="font-size:11px;opacity:.65">— sell directly</span></button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'page-type')">Opt-in / Lead capture <span style="font-size:11px;opacity:.65">— collect leads first</span></button>
-        </div>
-      </div>
-      <div class="form-group full">
-        <label>Main goal — what should the visitor do? <span>*</span></label>
-        <div class="toggle-group" id="goal-group">
-          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Order via WhatsApp</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Order via Orderla</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Submit their email</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Book a slot or class</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Make a purchase</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'goal')">Contact me</button>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>CTA button text <span>* what should the button say?</span></label>
-        <input type="text" id="cta-text" placeholder="e.g. Order Now via WhatsApp">
-      </div>
-      <div class="form-group">
-        <label>Your WhatsApp / website / Orderla link <span>optional</span></label>
-        <input type="text" id="cta-link" placeholder="e.g. https://wa.me/601XXXXXXXX">
-      </div>
-      <div class="form-group full">
-        <label>3 key selling points <span>* one per line</span></label>
-        <textarea id="selling-points" placeholder="e.g.&#10;No preservatives — all natural, clean ingredients&#10;Ready stock, same-day delivery in Klang Valley&#10;Resealable packaging, stays fresh for 3 months" rows="4"></textarea>
-      </div>
-      <div class="form-group full">
-        <label>Language <span>*</span></label>
-        <div class="toggle-group" id="lang-group">
-          <button class="toggle-pill" onclick="toggleSingle(this,'lang')">English</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'lang')">Bahasa Malaysia</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'lang')">Both (English + BM)</button>
-        </div>
-      </div>
-    </div>
-    <div class="nav-row">
-      <button class="btn btn-back" onclick="prevStep(2)">← Back</button>
-      <button class="btn btn-next" onclick="nextStep(2)" id="next-2">Next: Brand & tone →</button>
-    </div>
-  </div>
+  <div class="step-card" id="step-3">
+    <div class="step-tag" data-i18n="s3tag">Step 3 of 3</div>
+    <h2 data-i18n="s3h">Brand & tone</h2>
+    <p class="step-intro" data-i18n="s3p">Refer to your branding package — hex codes, fonts, and tone you use consistently across your content.</p>
+    <div class="form-grid">
+      <div class="form-group full"><label data-i18n="l_tone">Brand voice / tone *</label>
+        <div class="toggle-group" id="tone-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')" data-i18n-pill="tn0">Warm & friendly</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')" data-i18n-pill="tn1">Professional & direct</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')" data-i18n-pill="tn2">Fun & casual</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')" data-i18n-pill="tn3">Elegant & premium</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')" data-i18n-pill="tn4">Energetic & bold</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'tone')" data-i18n-pill="tn5">Calm & informative</button>
+        </div>
+      </div>
+      <div class="form-group"><label data-i18n="l_c1">Primary brand colour</label><div class="color-row"><input type="color" id="color1" value="#6B1717" oninput="document.getElementById('hex1').value=this.value"><input type="text" id="hex1" class="color-hex" value="#6B1717" placeholder="#000000" oninput="syncColor(this,'color1')"></div></div>
+      <div class="form-group"><label data-i18n="l_c2">Accent colour <span>optional</span></label><div class="color-row"><input type="color" id="color2" value="#D94E0F" oninput="document.getElementById('hex2').value=this.value"><input type="text" id="hex2" class="color-hex" value="#D94E0F" placeholder="#000000" oninput="syncColor(this,'color2')"></div></div>
+      <div class="form-group full"><label data-i18n="l_font">Font style <span>optional</span></label>
+        <div class="toggle-group" id="font-group">
+          <button class="toggle-pill" onclick="toggleSingle(this,'font')" data-i18n-pill="fn0">Serif (classic, premium)</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'font')" data-i18n-pill="fn1">Sans-serif (clean, modern)</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'font')" data-i18n-pill="fn2">Bold display (energetic)</button>
+          <button class="toggle-pill" onclick="toggleSingle(this,'font')" data-i18n-pill="fn3">No preference</button>
+        </div>
+      </div>
+      <div class="form-group full"><label data-i18n="l_sec">Sections to include <span>select all that apply</span></label>
+        <div class="toggle-group" id="sections-group">
+          <button class="toggle-pill" onclick="toggleMulti(this)" data-i18n-pill="sc0">Hero section</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)" data-i18n-pill="sc1">About / Our story</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)" data-i18n-pill="sc2">Product / Service showcase</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)" data-i18n-pill="sc3">Testimonials</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)" data-i18n-pill="sc4">FAQ</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)" data-i18n-pill="sc5">Contact / Footer</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)" data-i18n-pill="sc6">Lead capture form</button>
+          <button class="toggle-pill" onclick="toggleMulti(this)" data-i18n-pill="sc7">Pricing table</button>
+        </div>
+      </div>
+      <div class="form-group full"><label data-i18n="l_excl">What should Gamma NOT include? <span>optional</span></label><input type="text" id="dont-include" placeholder="e.g. Do not include prices. Do not show delivery fees."></div>
+    </div>
+    <div class="nav-row"><button class="btn btn-back" onclick="prevStep(3)" data-i18n="bback">← Back</button><button class="btn btn-generate" onclick="generate()"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg><span data-i18n="bgen">Generate my Gamma prompts</span></button></div>
+  </div>
 
-  <!-- STEP 3 -->
-  <div class="step-card" id="step-3">
-    <div class="step-tag">Step 3 of 3</div>
-    <h2>Brand & tone</h2>
-    <p>This is where your branding package comes in. Refer to the hex codes and fonts you defined before starting this tool.</p>
-    <div class="form-grid">
-      <div class="form-group full">
-        <label>Brand voice / tone <span>*</span></label>
-        <div class="toggle-group" id="tone-group">
-          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Warm & friendly</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Professional & direct</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Fun & casual</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Elegant & premium</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Energetic & bold</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'tone')">Calm & informative</button>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Primary brand colour</label>
-        <div class="color-row">
-          <input type="color" id="color1" value="#6B1717" oninput="document.getElementById('hex1').value=this.value">
-          <input type="text" id="hex1" class="color-hex" value="#6B1717" placeholder="#000000" oninput="syncColor(this,'color1')">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Accent colour <span>optional</span></label>
-        <div class="color-row">
-          <input type="color" id="color2" value="#D94E0F" oninput="document.getElementById('hex2').value=this.value">
-          <input type="text" id="hex2" class="color-hex" value="#D94E0F" placeholder="#000000" oninput="syncColor(this,'color2')">
-        </div>
-      </div>
-      <div class="form-group full">
-        <label>Font style preference <span>optional</span></label>
-        <div class="toggle-group" id="font-group">
-          <button class="toggle-pill" onclick="toggleSingle(this,'font')">Serif (classic, premium)</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'font')">Sans-serif (clean, modern)</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'font')">Bold display (energetic)</button>
-          <button class="toggle-pill" onclick="toggleSingle(this,'font')">No preference</button>
-        </div>
-      </div>
-      <div class="form-group full">
-        <label>Sections to include <span>select all that apply</span></label>
-        <div class="toggle-group" id="sections-group">
-          <button class="toggle-pill" onclick="toggleMulti(this)">Hero section</button>
-          <button class="toggle-pill" onclick="toggleMulti(this)">About / Our story</button>
-          <button class="toggle-pill" onclick="toggleMulti(this)">Product showcase</button>
-          <button class="toggle-pill" onclick="toggleMulti(this)">Testimonials</button>
-          <button class="toggle-pill" onclick="toggleMulti(this)">FAQ</button>
-          <button class="toggle-pill" onclick="toggleMulti(this)">Contact / Footer</button>
-          <button class="toggle-pill" onclick="toggleMulti(this)">Lead capture form</button>
-          <button class="toggle-pill" onclick="toggleMulti(this)">Pricing table</button>
-        </div>
-      </div>
-      <div class="form-group full">
-        <label>What should Gamma NOT invent or include? <span>optional</span></label>
-        <input type="text" id="dont-include" placeholder="e.g. Do not include prices. Do not show delivery fees.">
-      </div>
-    </div>
-    <div class="nav-row">
-      <button class="btn btn-back" onclick="prevStep(3)">← Back</button>
-      <button class="btn btn-generate" onclick="generate()">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Generate my Gamma prompts
-      </button>
-    </div>
-  </div>
-
-  <!-- RESULTS -->
-  <div id="result-section">
-    <div class="result-header">
-      <div class="tick">✦</div>
-      <h2>Your prompts are ready</h2>
-      <p>Copy each prompt and paste it where indicated. Use ChatGPT first, then Gamma.</p>
-    </div>
-
-    <div class="output-card">
-      <div class="output-head">
-        <div class="output-title">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#6B1717" stroke-width="1.2"/><path d="M8 4v4l3 2" stroke="#6B1717" stroke-width="1.2" stroke-linecap="round"/></svg>
-          Step 1 — Paste into ChatGPT first
-          <span class="output-badge">ChatGPT Brief</span>
-        </div>
-        <button class="copy-btn" id="copy-chatgpt" onclick="copyText('chatgpt-output','copy-chatgpt')">
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 4V2.5A1.5 1.5 0 0 0 7.5 1h-5A1.5 1.5 0 0 0 1 2.5v5A1.5 1.5 0 0 0 2.5 9H4" stroke="currentColor" stroke-width="1.2"/></svg>
-          Copy
-        </button>
-      </div>
-      <div class="output-body"><div class="prompt-text" id="chatgpt-output"></div></div>
-    </div>
-
-    <div class="output-card">
-      <div class="output-head">
-        <div class="output-title">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="3" stroke="#6B1717" stroke-width="1.2"/><path d="M5 8h6M5 5.5h6M5 10.5h4" stroke="#6B1717" stroke-width="1.2" stroke-linecap="round"/></svg>
-          Step 2 — Paste into Gamma AI
-          <span class="output-badge">Gamma Prompt</span>
-        </div>
-        <button class="copy-btn" id="copy-gamma" onclick="copyText('gamma-output','copy-gamma')">
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 4V2.5A1.5 1.5 0 0 0 7.5 1h-5A1.5 1.5 0 0 0 1 2.5v5A1.5 1.5 0 0 0 2.5 9H4" stroke="currentColor" stroke-width="1.2"/></svg>
-          Copy
-        </button>
-      </div>
-      <div class="output-body"><div class="prompt-text" id="gamma-output"></div></div>
-    </div>
-
-    <!-- LEAD CAPTURE -->
-    <div class="lead-card">
-      <div class="lead-card-inner">
-        <div id="lead-form-wrap">
-          <div class="lead-badge">Free · No spam · Unsubscribe anytime</div>
-          <h3>Be the first to know when new AI tools drop.</h3>
-          <p class="lead-desc">Join the ST community — we'll notify you when new free tools, templates, and AI updates are ready for you. No sales pitch. Just useful stuff.</p>
-          <!-- REPLACE xqenbvab WITH YOUR FORMSPREE FORM ID -->
-          <form class="lead-form" id="lead-form" onsubmit="submitLead(event)">
-            <input type="text" id="lead-name" name="name" placeholder="Your full name *" required>
-            <input type="email" id="lead-email" name="email" placeholder="Email address *" required>
-            <input type="tel" id="lead-phone" name="phone" placeholder="HP / WhatsApp number *" required>
-            <input type="hidden" name="source" value="PromptKit by ST">
-            <input type="hidden" name="_subject" value="New PromptKit subscriber">
-            <button type="submit" class="lead-submit" id="lead-submit-btn">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Notify me of new tools
-            </button>
-          </form>
-          <p class="lead-privacy">Your details are kept private. We will never share or sell your information.</p>
-          <div class="share-row" style="margin-top:20px">
-            <a class="share-btn share-wa" href="https://api.whatsapp.com/send?text=Try%20this%20free%20tool%20by%20Synthesist%20Transformation%20%E2%80%94%20generate%20your%20Gamma%20AI%20page%20prompt%20in%203%20steps%20%F0%9F%91%89%20https%3A%2F%2Fstmy-ai.github.io%2Fst-gamma-prompt%2F" target="_blank">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.896 9.896 0 01-4.988-1.342L2 19l1.518-5.042A9.9 9.9 0 0112.029 3.12C17.551 3.12 22 7.569 22 13.091c0 5.52-4.449 9.789-9.971 9.789z"/></svg>
-              Share this tool
-            </a>
-            <button class="share-btn share-copy-link" onclick="copyToolLink(this)">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 8.5l3-3M8 5a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM6 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              Copy link
-            </button>
-          </div>
-        </div>
-        <div class="lead-success" id="lead-success">
-          <div class="success-icon">✦</div>
-          <h4 style="color:var(--cr)">You're in!</h4>
-          <p>We'll notify you as soon as new tools and updates are ready.<br>Keep an eye on your inbox.</p>
-          <div class="share-row" style="margin-top:16px">
-            <a class="share-btn share-wa" href="https://api.whatsapp.com/send?text=Try%20this%20free%20tool%20by%20Synthesist%20Transformation%20%E2%80%94%20generate%20your%20Gamma%20AI%20page%20prompt%20in%203%20steps%20%F0%9F%91%89%20https%3A%2F%2Fstmy-ai.github.io%2Fst-gamma-prompt%2F" target="_blank">Share this tool</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <button class="restart-btn" onclick="restart()">← Generate a new prompt</button>
-  </div>
-
+  <div id="result-section">
+    <div class="result-header"><div class="result-tick">✦</div><h2 data-i18n="rt">Your prompts are ready</h2><p data-i18n="rp">Copy each prompt and paste where indicated. Use ChatGPT first, then Gamma.</p></div>
+    <div class="output-card">
+      <div class="output-head">
+        <div class="output-title"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#6B1717" stroke-width="1.2"/><path d="M7 3.5v4l2.5 1.5" stroke="#6B1717" stroke-width="1.2" stroke-linecap="round"/></svg><span data-i18n="rs1">Step 1 — Paste into ChatGPT first</span><span class="output-badge" data-i18n="rb1">ChatGPT Brief</span></div>
+        <button class="copy-btn" id="copy-chatgpt" onclick="copyText('chatgpt-output','copy-chatgpt')"><svg width="12" height="12" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 4V2.5A1.5 1.5 0 0 0 7.5 1h-5A1.5 1.5 0 0 0 1 2.5v5A1.5 1.5 0 0 0 2.5 9H4" stroke="currentColor" stroke-width="1.2"/></svg><span data-i18n="bcopy">Copy</span></button>
+      </div>
+      <div class="output-body"><div class="prompt-text" id="chatgpt-output"></div></div>
+    </div>
+    <div class="output-card">
+      <div class="output-head">
+        <div class="output-title"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="#6B1717" stroke-width="1.2"/><path d="M4.5 7h5M4.5 5h5M4.5 9h3.5" stroke="#6B1717" stroke-width="1.2" stroke-linecap="round"/></svg><span data-i18n="rs2">Step 2 — Paste into Gamma AI</span><span class="output-badge" data-i18n="rb2">Gamma Prompt</span></div>
+        <button class="copy-btn" id="copy-gamma" onclick="copyText('gamma-output','copy-gamma')"><svg width="12" height="12" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 4V2.5A1.5 1.5 0 0 0 7.5 1h-5A1.5 1.5 0 0 0 1 2.5v5A1.5 1.5 0 0 0 2.5 9H4" stroke="currentColor" stroke-width="1.2"/></svg><span data-i18n="bcopy">Copy</span></button>
+      </div>
+      <div class="output-body"><div class="prompt-text" id="gamma-output"></div></div>
+    </div>
+    <div class="lead-card">
+      <div class="lead-inner">
+        <div id="lead-form-wrap">
+          <div class="lead-badge" data-i18n="lbadge">Free · No spam · Unsubscribe anytime</div>
+          <h3 data-i18n="ltitle">Be the first to know when new AI tools drop.</h3>
+          <p class="lead-desc" data-i18n="ldesc">Join the ST community — get notified when new free tools, templates, and AI updates are ready. No sales pitch. Just useful stuff.</p>
+          <form class="lead-form" id="lead-form" onsubmit="submitLead(event)">
+            <input type="text" id="lead-name" name="name" data-i18n-ph="ph0" placeholder="Your full name *" required>
+            <input type="email" id="lead-email" name="email" data-i18n-ph="ph1" placeholder="Email address *" required>
+            <input type="tel" id="lead-phone" name="phone" data-i18n-ph="ph2" placeholder="HP / WhatsApp number *" required>
+            <input type="hidden" name="source" value="Gamma Prompt Generator By ST">
+            <input type="hidden" name="_subject" value="New subscriber — Gamma Prompt Generator By ST">
+            <button type="submit" class="lead-submit" id="lsub"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="bnotify">Notify me of new tools</span></button>
+          </form>
+          <p class="lead-privacy" data-i18n="lprivacy">Your details are kept private. We will never share or sell your information.</p>
+          <div class="share-row">
+            <a class="share-btn share-wa" href="https://api.whatsapp.com/send?text=Jana+prompt+Gamma+AI+anda+dalam+3+langkah+%E2%80%94+alat+percuma+oleh+ST+%F0%9F%91%89+https%3A%2F%2Fstmy-ai.github.io%2Fst-gamma-prompt%2F" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.896 9.896 0 01-4.988-1.342L2 19l1.518-5.042A9.9 9.9 0 0112.029 3.12C17.551 3.12 22 7.569 22 13.091c0 5.52-4.449 9.789-9.971 9.789z"/></svg><span data-i18n="bshare">Share this tool</span></a>
+            <button class="share-btn share-copy" onclick="copyLink(this)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.5 7.5l3-3M7 4a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM5 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span data-i18n="bcopylink">Copy link</span></button>
+          </div>
+        </div>
+        <div class="lead-success" id="lead-success">
+          <div class="success-icon">✦</div>
+          <h4 style="color:var(--cr);font-family:'Playfair Display',serif;font-size:18px;margin-bottom:5px" data-i18n="suct">You're in!</h4>
+          <p style="color:rgba(252,230,201,.72);font-size:13px;line-height:1.6" data-i18n="sucp">We'll notify you as soon as new tools are ready. Check your inbox.</p>
+          <div class="share-row"><a class="share-btn share-wa" href="https://api.whatsapp.com/send?text=Jana+prompt+Gamma+AI+dalam+3+langkah+%F0%9F%91%89+https%3A%2F%2Fstmy-ai.github.io%2Fst-gamma-prompt%2F" target="_blank"><span data-i18n="bshare">Share this tool</span></a></div>
+        </div>
+      </div>
+    </div>
+    <button class="restart-btn" onclick="restart()" data-i18n="brestart">← Generate a new prompt</button>
+  </div>
 </div>
 
 <footer>
-  <div class="footer-links">
-    <a href="https://stmy.online/">Home</a>
-    <span class="sep">|</span>
-    <a href="https://stmy.online/read-do-tools">Read & Do Tools</a>
-    <span class="sep">|</span>
-    <a href="https://stmy.online/once-by-st">Once by ST</a>
-    <span class="sep">|</span>
-    <a href="https://stmy.online/done-for-you">Done-For-You</a>
-    <span class="sep">|</span>
-    <a href="https://stmy.online/st-graduate">ST Graduate</a>
-    <span class="sep">|</span>
-    <a href="https://stmy.online/st-affiliate">ST Affiliate</a>
-  </div>
-  <p>© 2026 Synthesist Transformation Enterprise. Registered with SSM Malaysia.</p>
+  <div class="footer-links">
+    <a href="https://stmy.online/">Home</a><span class="sep">|</span>
+    <a href="https://stmy.online/read-do-tools">Read & Do Tools</a><span class="sep">|</span>
+    <a href="https://stmy.online/once-by-st">Once by ST</a><span class="sep">|</span>
+    <a href="https://stmy.online/done-for-you">Done-For-You</a><span class="sep">|</span>
+    <a href="https://stmy.online/st-graduate">ST Graduate</a><span class="sep">|</span>
+    <a href="https://stmy.online/st-affiliate">ST Affiliate</a>
+  </div>
+  <p>© 2026 Synthesist Transformation Enterprise. Registered with SSM Malaysia.</p>
 </footer>
 
 <script>
 document.addEventListener('contextmenu',e=>e.preventDefault());
-document.addEventListener('keydown',e=>{
-  if(e.key==='F12')e.preventDefault();
-  if(e.ctrlKey&&e.shiftKey&&['I','J','i','j'].includes(e.key))e.preventDefault();
-  if(e.ctrlKey&&['U','u'].includes(e.key))e.preventDefault();
-});
+document.addEventListener('keydown',e=>{if(e.key==='F12')e.preventDefault();if(e.ctrlKey&&e.shiftKey&&['I','J','i','j'].includes(e.key))e.preventDefault();if(e.ctrlKey&&['U','u'].includes(e.key))e.preventDefault()});
 
-let state={step:1};
+const T={
+  en:{
+    how_btn:'How to Use',how_title:'How to Use',how_sub:'Generate your Gamma prompt in 4 simple steps',
+    hs1t:'Choose what you are building',hs1d:'Select your page type — business, resume, freelancer, personal brand, or event. This shapes the prompts generated for you.',
+    hs2t:'Fill in 3 quick sections',hs2d:'Basics, page details and goals, then brand colours and tone. Be specific — the more detail, the better the prompts.',
+    hs3t:'Click Generate',hs3d:'Your ChatGPT brief and Gamma AI prompt are generated automatically and ready to copy.',
+    hs4t:'Copy, paste, and build',hs4d:'Paste the ChatGPT brief into ChatGPT first to plan your content. Then paste the Gamma prompt into Gamma AI → New → Generate with AI → Page.',
+    tip_lbl:'Pro Tip:',tip_txt:'The more details you fill in, the better your generated prompts will be.',
+    h_badge:'Free Tool · No sign-up needed',h_h1:'Your Gamma Page Prompt,',h_em:'generated.',
+    h_sub:'Fill in 3 steps about your business, resume, or brand. Get a ready-to-paste prompt for Gamma AI and ChatGPT — no guessing, no blank screen.',
+    sl1:'Business basics',sl2:'Page details',sl3:'Brand & tone',sl4:'Your prompts are ready',
+    sp1:'Step 1 of 3 — Business basics',sp2:'Step 2 of 3 — Page details',sp3:'Step 3 of 3 — Brand & tone',
+    s1tag:'Step 1 of 3',s1h:'Tell us about yourself or your business',s1p:'This goes into your Gamma prompt and ChatGPT brief. Be specific for better results.',
+    s2tag:'Step 2 of 3',s2h:'What should this page do?',s2p:'Your page type and goal shape the entire structure Gamma builds. Choose carefully.',
+    s3tag:'Step 3 of 3',s3h:'Brand & tone',s3p:'Refer to your branding package — hex codes, fonts, and tone you use consistently.',
+    e1:'Please fill in all required fields before continuing.',e2:'Please select page type, goal, language, and fill in the CTA text.',
+    uc_lbl:'What are you building? *',
+    uc0:'Business / Product page',uc1:'Resume / CV page',uc2:'Freelancer portfolio',uc3:'Personal brand',uc4:'Event page',uc5:'Other',
+    ln_biz:'Business name',ln_resume:'Your full name',ln_free:'Your name / Studio name',ln_brand:'Your name / Brand name',ln_event:'Event name',ln_other:'Name / Title',
+    lw_biz:'What do you sell or offer?',lw_resume:'Your role and top skills',lw_free:'What services do you offer?',lw_brand:'What is your personal brand about?',lw_event:'What is this event about?',lw_other:'What is this page about?',
+    lc_biz:'Describe your ideal customer or audience',lc_resume:'Who is your ideal employer or recruiter?',lc_free:'Who is your ideal client?',lc_brand:'Who is your target audience?',lc_event:'Who is this event for?',lc_other:'Who is this page for?',
+    lp_biz:'3 key selling points or highlights',lp_resume:'3 key achievements or strengths',lp_free:'3 reasons clients should choose you',lp_brand:'3 things you want people to know about you',lp_event:'3 reasons to attend this event',lp_other:'3 key highlights',
+    l_loc:'Your location * e.g. Puchong, Selangor',l_cat:'Category *',l_pt:'Page type * What are you building?',l_gl:'Main goal — what should the visitor do? *',
+    l_cta:'CTA button text * what should it say?',l_link:'WhatsApp / website link optional',l_lang:'Language *',l_tone:'Brand voice / tone *',l_c1:'Primary brand colour',l_c2:'Accent colour optional',l_font:'Font style optional',l_sec:'Sections to include select all that apply',l_excl:'What should Gamma NOT include? optional',
+    c0:'— Select —',c1:'Food & Beverage',c2:'Beauty & Wellness',c3:'Education & Coaching',c4:'Professional Services',c5:'Retail & E-commerce',c6:'Health & Fitness',c7:'Events & Photography',c8:'Handmade & Crafts',c9:'Finance & Investment',c10:'Technology & Digital',c11:'Creative & Design',c12:'Other',
+    pt0:'Sales page — sell directly',pt1:'Opt-in / Lead capture — collect contacts first',
+    g0:'Order via WhatsApp',g1:'Order via Orderla',g2:'Submit their email',g3:'Book a slot or class',g4:'Make a purchase',g5:'Contact me',g6:'Hire me / Get in touch',g7:'RSVP / Register',
+    lg0:'English',lg1:'Bahasa Malaysia',lg2:'Both (English + BM)',
+    tn0:'Warm & friendly',tn1:'Professional & direct',tn2:'Fun & casual',tn3:'Elegant & premium',tn4:'Energetic & bold',tn5:'Calm & informative',
+    fn0:'Serif (classic, premium)',fn1:'Sans-serif (clean, modern)',fn2:'Bold display (energetic)',fn3:'No preference',
+    sc0:'Hero section',sc1:'About / Our story',sc2:'Product / Service showcase',sc3:'Testimonials',sc4:'FAQ',sc5:'Contact / Footer',sc6:'Lead capture form',sc7:'Pricing table',
+    bn1:'Next: Page details →',bn2:'Next: Brand & tone →',bback:'← Back',bgen:'Generate my Gamma prompts',
+    rt:'Your prompts are ready',rp:'Copy each prompt and paste where indicated. Use ChatGPT first, then Gamma.',
+    rs1:'Step 1 — Paste into ChatGPT first',rs2:'Step 2 — Paste into Gamma AI',rb1:'ChatGPT Brief',rb2:'Gamma Prompt',bcopy:'Copy',
+    lbadge:'Free · No spam · Unsubscribe anytime',ltitle:'Be the first to know when new AI tools drop.',
+    ldesc:'Join the ST community — get notified when new free tools, templates, and AI updates are ready. No sales pitch. Just useful stuff.',
+    ph0:'Your full name *',ph1:'Email address *',ph2:'HP / WhatsApp number *',bnotify:'Notify me of new tools',
+    lprivacy:'Your details are kept private. We will never share or sell your information.',
+    bshare:'Share this tool',bcopylink:'Copy link',suct:"You're in!",sucp:"We'll notify you as soon as new tools are ready. Check your inbox.",brestart:'← Generate a new prompt',
+  },
+  bm:{
+    how_btn:'Cara Guna',how_title:'Cara Guna',how_sub:'Jana prompt Gamma anda dalam 4 langkah mudah',
+    hs1t:'Pilih apa yang anda bina',hs1d:'Pilih jenis halaman — perniagaan, resume, portfolio pekerja bebas, jenama peribadi, atau acara. Ini menentukan prompt yang dijana untuk anda.',
+    hs2t:'Isi 3 bahagian mudah',hs2d:'Asas perniagaan atau peribadi, butiran halaman dan matlamat, kemudian warna jenama dan nada. Semakin spesifik, semakin baik hasilnya.',
+    hs3t:'Klik Jana',hs3d:'Brief ChatGPT dan prompt Gamma AI anda dijana secara automatik dan sedia untuk disalin.',
+    hs4t:'Salin, tampal, dan bina',hs4d:'Tampalkan brief ChatGPT ke dalam ChatGPT dahulu untuk merancang kandungan anda. Kemudian tampalkan prompt Gamma ke dalam Gamma AI → Baru → Jana dengan AI → Halaman.',
+    tip_lbl:'Petua Pro:',tip_txt:'Semakin banyak butiran yang anda isi, semakin baik prompt yang dijana.',
+    h_badge:'Alat Percuma · Tanpa Pendaftaran',h_h1:'Prompt Halaman Gamma Anda,',h_em:'dijana.',
+    h_sub:'Isi 3 langkah tentang perniagaan, resume, atau jenama anda. Dapatkan prompt siap tampal untuk Gamma AI dan ChatGPT — tanpa tekaan, tanpa skrin kosong.',
+    sl1:'Asas perniagaan',sl2:'Butiran halaman',sl3:'Jenama & nada',sl4:'Prompt anda sedia',
+    sp1:'Langkah 1 daripada 3 — Asas perniagaan',sp2:'Langkah 2 daripada 3 — Butiran halaman',sp3:'Langkah 3 daripada 3 — Jenama & nada',
+    s1tag:'Langkah 1 daripada 3',s1h:'Ceritakan tentang diri anda atau perniagaan anda',s1p:'Maklumat ini akan dimasukkan ke dalam prompt Gamma dan brief ChatGPT anda. Semakin spesifik, semakin baik.',
+    s2tag:'Langkah 2 daripada 3',s2h:'Apa yang perlu halaman ini lakukan?',s2p:'Jenis halaman dan matlamat anda menentukan keseluruhan struktur yang Gamma bina. Pilih dengan teliti.',
+    s3tag:'Langkah 3 daripada 3',s3h:'Jenama & Nada',s3p:'Rujuk pakej jenama anda — kod hex, fon, dan nada yang anda gunakan secara konsisten.',
+    e1:'Sila isi semua medan yang diperlukan sebelum meneruskan.',e2:'Sila pilih jenis halaman, matlamat, bahasa, dan isi teks CTA.',
+    uc_lbl:'Apa yang anda bina? *',
+    uc0:'Halaman perniagaan / produk',uc1:'Halaman resume / CV',uc2:'Portfolio pekerja bebas',uc3:'Jenama peribadi',uc4:'Halaman acara',uc5:'Lain-lain',
+    ln_biz:'Nama perniagaan',ln_resume:'Nama penuh anda',ln_free:'Nama anda / nama studio',ln_brand:'Nama anda / nama jenama',ln_event:'Nama acara',ln_other:'Nama / Tajuk',
+    lw_biz:'Apa yang anda jual atau tawarkan?',lw_resume:'Peranan dan kemahiran utama anda',lw_free:'Apakah perkhidmatan yang anda tawarkan?',lw_brand:'Apakah jenama peribadi anda?',lw_event:'Apakah acara ini?',lw_other:'Apakah halaman ini tentang?',
+    lc_biz:'Gambarkan pelanggan atau sasaran ideal anda',lc_resume:'Siapakah majikan atau perekrut ideal anda?',lc_free:'Siapakah klien ideal anda?',lc_brand:'Siapakah sasaran anda?',lc_event:'Acara ini untuk siapa?',lc_other:'Halaman ini untuk siapa?',
+    lp_biz:'3 kelebihan atau perkara utama',lp_resume:'3 pencapaian atau kekuatan utama',lp_free:'3 sebab klien patut pilih anda',lp_brand:'3 perkara yang anda ingin orang tahu tentang anda',lp_event:'3 sebab untuk hadir acara ini',lp_other:'3 perkara penting',
+    l_loc:'Lokasi anda * cth. Puchong, Selangor',l_cat:'Kategori *',l_pt:'Jenis halaman * Apa yang anda bina?',l_gl:'Matlamat utama — apa yang perlu pengunjung lakukan? *',
+    l_cta:'Teks butang CTA * apa yang perlu ia katakan?',l_link:'Pautan WhatsApp / laman web (pilihan)',l_lang:'Bahasa *',l_tone:'Suara / nada jenama *',l_c1:'Warna jenama utama',l_c2:'Warna aksen (pilihan)',l_font:'Gaya fon (pilihan)',l_sec:'Bahagian yang perlu disertakan (pilih semua)',l_excl:'Apa yang Gamma TIDAK perlu sertakan? (pilihan)',
+    c0:'— Pilih —',c1:'Makanan & Minuman',c2:'Kecantikan & Kesihatan',c3:'Pendidikan & Bimbingan',c4:'Perkhidmatan Profesional',c5:'Runcit & E-dagang',c6:'Kesihatan & Kecergasan',c7:'Acara & Fotografi',c8:'Kraftangan & Buatan Tangan',c9:'Kewangan & Pelaburan',c10:'Teknologi & Digital',c11:'Kreatif & Reka Bentuk',c12:'Lain-lain',
+    pt0:'Halaman jualan — jual terus',pt1:'Opt-in / Tangkap petunjuk — kumpul kenalan dahulu',
+    g0:'Tempah melalui WhatsApp',g1:'Tempah melalui Orderla',g2:'Hantar e-mel mereka',g3:'Tempah slot atau kelas',g4:'Buat pembelian',g5:'Hubungi saya',g6:'Ambil saya bekerja / Hubungi',g7:'RSVP / Daftar',
+    lg0:'Bahasa Inggeris',lg1:'Bahasa Malaysia',lg2:'Kedua-duanya (BI + BM)',
+    tn0:'Mesra & peramah',tn1:'Profesional & terus',tn2:'Seronok & santai',tn3:'Elegan & premium',tn4:'Bersemangat & berani',tn5:'Tenang & bermaklumat',
+    fn0:'Serif (klasik, premium)',fn1:'Sans-serif (bersih, moden)',fn2:'Bold display (bersemangat)',fn3:'Tiada pilihan',
+    sc0:'Bahagian hero',sc1:'Tentang kami / Kisah kami',sc2:'Paparan produk / perkhidmatan',sc3:'Testimoni',sc4:'Soalan Lazim',sc5:'Hubungi / Footer',sc6:'Borang tangkap petunjuk',sc7:'Jadual harga',
+    bn1:'Seterusnya: Butiran Halaman →',bn2:'Seterusnya: Jenama & Nada →',bback:'← Kembali',bgen:'Jana prompt Gamma saya',
+    rt:'Prompt Anda Sedia',rp:'Salin setiap prompt dan tampalkan di tempat yang ditunjukkan. Gunakan ChatGPT dahulu, kemudian Gamma.',
+    rs1:'Langkah 1 — Tampal ke dalam ChatGPT dahulu',rs2:'Langkah 2 — Tampal ke dalam Gamma AI',rb1:'Brief ChatGPT',rb2:'Prompt Gamma',bcopy:'Salin',
+    lbadge:'Percuma · Tanpa spam · Berhenti langgan bila-bila masa',ltitle:'Jadilah yang pertama tahu apabila alat AI baru tersedia.',
+    ldesc:'Sertai komuniti ST — kami akan maklumkan anda apabila alat percuma, templat, dan kemaskini AI baru sedia. Tiada jualan paksa. Hanya benda yang berguna.',
+    ph0:'Nama penuh anda *',ph1:'Alamat e-mel *',ph2:'Nombor HP / WhatsApp *',bnotify:'Maklumkan saya tentang alat baru',
+    lprivacy:'Maklumat anda dirahsiakan. Kami tidak akan berkongsi atau menjual maklumat anda.',
+    bshare:'Kongsi alat ini',bcopylink:'Salin pautan',suct:'Berjaya!',sucp:'Kami akan maklumkan anda sebaik sahaja alat baru sedia. Semak peti masuk anda.',brestart:'← Jana prompt baru',
+  }
+};
+
+let lang='en', state={step:1};
 const sel=id=>document.getElementById(id);
 const val=id=>sel(id)?sel(id).value.trim():'';
+const t=k=>T[lang][k]||T.en[k]||k;
 const getToggle=grp=>{const b=document.querySelector(`#${grp}-group .toggle-pill.on`);return b?b.textContent.trim().replace(/\s+/g,' '):''};
 const getMulti=grp=>[...document.querySelectorAll(`#${grp}-group .toggle-pill.on`)].map(b=>b.textContent.trim()).join(', ');
 
-function toggleSingle(btn,grp){
-  document.querySelectorAll(`#${grp}-group .toggle-pill`).forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  document.getElementById(`${grp}-group`).classList.remove('error');
+function setLang(l){
+  lang=l;
+  sel('btn-en').classList.toggle('active',l==='en');
+  sel('btn-bm').classList.toggle('active',l==='bm');
+  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.getAttribute('data-i18n')));
+  document.querySelectorAll('[data-i18n-pill]').forEach(el=>el.textContent=t(el.getAttribute('data-i18n-pill')));
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>el.placeholder=t(el.getAttribute('data-i18n-ph')));
+  document.querySelectorAll('select option[data-i18n]').forEach(el=>el.textContent=t(el.getAttribute('data-i18n')));
+  updateUC();
+  sel('step-label').textContent=t(['sp1','sp2','sp3'][state.step-1]);
 }
+
+const UC=['biz','resume','free','brand','event','other'];
+function getUC(){const b=document.querySelector('#usecase-group .toggle-pill.on');if(!b)return 'biz';const idx=[...document.querySelectorAll('#usecase-group .toggle-pill')].indexOf(b);return UC[idx]||'biz'}
+function updateUC(){const k=getUC();sel('ln-text').textContent=t(`ln_${k}`);sel('lw-text').textContent=t(`lw_${k}`);sel('lc-text').textContent=t(`lc_${k}`);sel('lp-text').textContent=t(`lp_${k}`)}
+
+function closeModal(){sel('howModal').classList.remove('open')}
+
+function toggleSingle(btn,grp){document.querySelectorAll(`#${grp}-group .toggle-pill`).forEach(b=>b.classList.remove('on'));btn.classList.add('on');const g=sel(`${grp}-group`);if(g)g.classList.remove('tg-error')}
 function toggleMulti(btn){btn.classList.toggle('on')}
+function syncColor(input,cid){if(/^#[0-9A-Fa-f]{6}$/.test(input.value))sel(cid).value=input.value}
 
 function validateStep(n){
-  let ok=true;
-  const showErr=id=>{const el=sel(id);if(el){el.classList.add('error');el.addEventListener('input',()=>el.classList.remove('error'),{once:true});el.addEventListener('change',()=>el.classList.remove('error'),{once:true})}; ok=false};
-  if(n===1){
-    if(!val('biz-name'))showErr('biz-name');
-    if(!val('biz-what'))showErr('biz-what');
-    if(!val('biz-location'))showErr('biz-location');
-    if(!val('biz-cat'))showErr('biz-cat');
-    if(!val('biz-customer'))showErr('biz-customer');
-    if(!ok){sel('err-1').classList.add('show');sel('next-1').classList.add('shake');setTimeout(()=>sel('next-1').classList.remove('shake'),400)}
-    else sel('err-1').classList.remove('show');
-  }
-  if(n===2){
-    if(!getToggle('page-type')){document.getElementById('page-type-group').classList.add('error');ok=false}
-    if(!getToggle('goal')){document.getElementById('goal-group').classList.add('error');ok=false}
-    if(!val('cta-text'))showErr('cta-text');
-    if(!getToggle('lang')){document.getElementById('lang-group').classList.add('error');ok=false}
-    if(!ok){sel('err-2').classList.add('show');sel('next-2').classList.add('shake');setTimeout(()=>sel('next-2').classList.remove('shake'),400)}
-    else sel('err-2').classList.remove('show');
-  }
-  return ok;
+  let ok=true;
+  const fail=id=>{const el=sel(id);if(el){el.classList.add('error');el.addEventListener('input',()=>el.classList.remove('error'),{once:true});el.addEventListener('change',()=>el.classList.remove('error'),{once:true})}ok=false};
+  const failG=grp=>{const g=sel(`${grp}-group`);if(g)g.classList.add('tg-error');ok=false};
+  if(n===1){if(!val('biz-name'))fail('biz-name');if(!val('biz-what'))fail('biz-what');if(!val('biz-location'))fail('biz-location');if(!val('biz-cat'))fail('biz-cat');if(!val('biz-customer'))fail('biz-customer');if(!ok){sel('err-1').classList.add('show');sel('next-1').classList.add('shake');setTimeout(()=>sel('next-1').classList.remove('shake'),400)}else sel('err-1').classList.remove('show')}
+  if(n===2){if(!getToggle('page-type'))failG('page-type');if(!getToggle('goal'))failG('goal');if(!val('cta-text'))fail('cta-text');if(!getToggle('lang'))failG('lang');if(!ok){sel('err-2').classList.add('show');sel('next-2').classList.add('shake');setTimeout(()=>sel('next-2').classList.remove('shake'),400)}else sel('err-2').classList.remove('show')}
+  return ok;
 }
 
-function nextStep(from){
-  if(!validateStep(from))return;
-  sel(`step-${from}`).classList.remove('active');
-  sel(`step-${from+1}`).classList.add('active');
-  state.step=from+1;
-  updateProgress();
-  window.scrollTo({top:sel('progress-wrap').offsetTop-20,behavior:'smooth'});
-}
-function prevStep(from){
-  sel(`step-${from}`).classList.remove('active');
-  sel(`step-${from-1}`).classList.add('active');
-  state.step=from-1;
-  updateProgress();
-  window.scrollTo({top:sel('progress-wrap').offsetTop-20,behavior:'smooth'});
-}
-function updateProgress(){
-  const s=state.step;
-  const labels=['Step 1 of 3 — Business basics','Step 2 of 3 — Page details','Step 3 of 3 — Brand & tone'];
-  const pcts=['33%','66%','100%'];
-  sel('step-label').textContent=labels[s-1];
-  sel('pct-label').textContent=pcts[s-1];
-  sel('fill').style.width=pcts[s-1];
-}
-function syncColor(input,colorId){
-  const v=input.value;
-  if(/^#[0-9A-Fa-f]{6}$/.test(v))sel(colorId).value=v;
-}
+function nextStep(from){if(!validateStep(from))return;sel(`step-${from}`).classList.remove('active');sel(`step-${from+1}`).classList.add('active');state.step=from+1;updateProg();window.scrollTo({top:sel('progress-wrap').offsetTop-60,behavior:'smooth'})}
+function prevStep(from){sel(`step-${from}`).classList.remove('active');sel(`step-${from-1}`).classList.add('active');state.step=from-1;updateProg();window.scrollTo({top:sel('progress-wrap').offsetTop-60,behavior:'smooth'})}
+function updateProg(){const pcts=['33%','66%','100%'];sel('step-label').textContent=t(['sp1','sp2','sp3'][state.step-1]);sel('pct-label').textContent=pcts[state.step-1];sel('fill').style.width=pcts[state.step-1]}
 
 function generate(){
-  const d={
-    name:val('biz-name'),what:val('biz-what'),location:val('biz-location'),
-    cat:val('biz-cat'),customer:val('biz-customer'),
-    pageType:getToggle('page-type')||'Sales page',
-    goal:getToggle('goal')||'Order via WhatsApp',
-    cta:val('cta-text')||'Order Now',ctaLink:val('cta-link'),
-    points:val('selling-points'),lang:getToggle('lang')||'English',
-    tone:getToggle('tone')||'Warm & friendly',
-    color1:val('hex1')||'#6B1717',color2:val('hex2')||'#D94E0F',
-    font:getToggle('font')||'No preference',
-    sections:getMulti('sections')||'Hero section, Product showcase, Call-to-action, Contact / Footer',
-    dontInclude:val('dont-include'),
-  };
-  const pts=d.points?d.points.split('\n').filter(l=>l.trim()).map((l,i)=>`  ${i+1}. ${l.trim()}`).join('\n'):'  1. [Add your first selling point]\n  2. [Add your second selling point]\n  3. [Add your third selling point]';
-  const sf=d.sections.split(',').map((s,i)=>`${i+1}. ${s.trim()}${s.trim()==='Lead capture form'?' — include name and email fields':''}`).join('\n');
-
-  sel('chatgpt-output').textContent=`I want to create a landing page for my business. Here are the details:\n\nBusiness name: ${d.name}\nCategory: ${d.cat}\nLocation: ${d.location}\nWhat I sell: ${d.what}\nTarget customer: ${d.customer}\n\nPage type: ${d.pageType}\nPage goal: ${d.goal}\nLanguage: ${d.lang}\nBrand tone: ${d.tone}\n\nPlease write the following content for my landing page:\n1. A headline (under 10 words, bold and specific)\n2. A subheadline (one sentence that explains what I offer)\n3. Three key selling points with a one-line explanation each:\n${pts}\n4. A call-to-action button text (my suggestion: "${d.cta}")\n5. A short closing paragraph that creates urgency or desire\n\nWrite everything in my brand tone: ${d.tone}.\n${d.lang!=='English'?`Write in ${d.lang}.\n`:''}Do not invent any prices, delivery fees, specific claims, or details I have not mentioned.\n${d.dontInclude?`Also exclude: ${d.dontInclude}`:''}`;
-
-  sel('gamma-output').textContent=`Create a single-page ${d.pageType.toLowerCase()} for ${d.name}.\n\n${d.name} is a ${d.cat} business based in ${d.location}. We serve ${d.customer}.\n\nWhat we offer: ${d.what}\n\nPage type: ${d.pageType}\nPage goal: Get visitors to ${d.goal.toLowerCase()}${d.ctaLink?` — link: ${d.ctaLink}`:''}\n\nPage sections to include:\n${sf}\n\nContent to include (paste your ChatGPT output here):\n— Headline: [PASTE FROM CHATGPT]\n— Subheadline: [PASTE FROM CHATGPT]\n— Selling points:\n${pts}\n— CTA button text: ${d.cta}\n\nBrand settings:\n— Primary colour: ${d.color1}\n— Accent colour: ${d.color2}\n— Font style: ${d.font}\n— Tone: ${d.tone}\n— Language: ${d.lang}\n\nDo not invent any prices, specific claims, or details not mentioned above.${d.dontInclude?`\nAlso exclude: ${d.dontInclude}`:''}\nDo not add navigation menus or links to other pages.\nKeep the page focused — one goal, one action.`;
-
-  sel('progress-wrap').style.display='none';
-  for(let i=1;i<=3;i++)sel(`step-${i}`).style.display='none';
-  sel('result-section').style.display='block';
-  window.scrollTo({top:0,behavior:'smooth'});
+  const k=getUC();
+  const d={name:val('biz-name'),what:val('biz-what'),loc:val('biz-location'),cat:val('biz-cat'),cust:val('biz-customer'),uc:getToggle('usecase')||'Business / Product page',pt:getToggle('page-type')||'Sales page',goal:getToggle('goal')||'Order via WhatsApp',cta:val('cta-text')||'Order Now',ctaLink:val('cta-link'),pts:val('selling-points'),lang:getToggle('lang')||'English',tone:getToggle('tone')||'Warm & friendly',c1:val('hex1')||'#6B1717',c2:val('hex2')||'#D94E0F',font:getToggle('font')||'No preference',sec:getMulti('sections')||'Hero section, Product/Service showcase, Call-to-action, Contact/Footer',excl:val('dont-include')};
+  const pl=d.pts?d.pts.split('\n').filter(l=>l.trim()).map((l,i)=>`  ${i+1}. ${l.trim()}`).join('\n'):'  1. [Add your first key point]\n  2. [Add your second key point]\n  3. [Add your third key point]';
+  const sl=d.sec.split(',').map((s,i)=>`${i+1}. ${s.trim()}${s.trim().toLowerCase().includes('lead')||s.trim().toLowerCase().includes('borang')?' — include name, email and phone fields':''}`).join('\n');
+  sel('chatgpt-output').textContent=`I want to create a landing page for: ${d.uc}\n\nName / Title: ${d.name}\nCategory: ${d.cat}\nLocation: ${d.loc}\nAbout: ${d.what}\nTarget audience: ${d.cust}\n\nPage type: ${d.pt}\nPage goal: ${d.goal}\nLanguage: ${d.lang}\nTone: ${d.tone}\n\nPlease write:\n1. A headline (under 10 words, bold and specific)\n2. A subheadline (one sentence explaining what I offer)\n3. Three key points with a one-line explanation each:\n${pl}\n4. A CTA button text (my suggestion: "${d.cta}")\n5. A short closing paragraph creating urgency or desire\n\nWrite in tone: ${d.tone}.\n${d.lang!=='English'&&d.lang!=='Bahasa Inggeris'?`Write in ${d.lang}.\n`:''}Do not invent prices, claims, or details I have not mentioned.\n${d.excl?`Also exclude: ${d.excl}`:''}`;
+  sel('gamma-output').textContent=`Create a single-page ${d.pt.toLowerCase()} for ${d.name}.\n\nPage purpose: ${d.uc}\nCategory: ${d.cat} | Location: ${d.loc}\nTarget audience: ${d.cust}\nAbout: ${d.what}\n\nPage goal: Get visitors to ${d.goal.toLowerCase()}${d.ctaLink?` — link: ${d.ctaLink}`:''}\n\nSections to include:\n${sl}\n\nContent (paste your ChatGPT output here):\n— Headline: [PASTE FROM CHATGPT]\n— Subheadline: [PASTE FROM CHATGPT]\n— Key points:\n${pl}\n— CTA button text: ${d.cta}\n— Closing paragraph: [PASTE FROM CHATGPT]\n\nBrand settings:\n— Primary colour: ${d.c1}\n— Accent colour: ${d.c2}\n— Font style: ${d.font}\n— Tone: ${d.tone}\n— Language: ${d.lang}\n\nDo not invent prices, specific claims, or details not listed above.${d.excl?`\nExclude: ${d.excl}`:''}\nNo navigation menus. No links to other pages.\nOne page. One goal. One action.`;
+  sel('progress-wrap').style.display='none';
+  for(let i=1;i<=3;i++)sel(`step-${i}`).style.display='none';
+  sel('result-section').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function copyText(outputId,btnId){
-  navigator.clipboard.writeText(sel(outputId).textContent).then(()=>{
-    const btn=sel(btnId);
-    btn.classList.add('copied');
-    btn.innerHTML=`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied!`;
-    setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M9 4V2.5A1.5 1.5 0 0 0 7.5 1h-5A1.5 1.5 0 0 0 1 2.5v5A1.5 1.5 0 0 0 2.5 9H4" stroke="currentColor" stroke-width="1.2"/></svg> Copy`},2500);
-  });
-}
-
-function copyToolLink(btn){
-  navigator.clipboard.writeText('https://stmy-ai.github.io/st-gamma-prompt/').then(()=>{
-    const orig=btn.innerHTML;
-    btn.textContent='✓ Link copied!';
-    setTimeout(()=>{btn.innerHTML=orig},2000);
-  });
-}
+function copyText(outId,btnId){navigator.clipboard.writeText(sel(outId).textContent).then(()=>{const b=sel(btnId);b.classList.add('copied');const sp=b.querySelector('span');sp.textContent=lang==='bm'?'Disalin!':'Copied!';setTimeout(()=>{b.classList.remove('copied');sp.textContent=t('bcopy')},2500)})}
+function copyLink(btn){navigator.clipboard.writeText('https://stmy-ai.github.io/st-gamma-prompt/').then(()=>{const sp=btn.querySelector('span');const orig=sp.textContent;sp.textContent=lang==='bm'?'✓ Pautan disalin!':'✓ Link copied!';setTimeout(()=>sp.textContent=orig,2000)})}
 
 async function submitLead(e){
-  e.preventDefault();
-  const btn=sel('lead-submit-btn');
-  btn.textContent='Submitting...';btn.disabled=true;
-  const name=val('lead-name'),email=val('lead-email'),phone=val('lead-phone');
-  if(!name||!email||!phone){
-    ['lead-name','lead-email','lead-phone'].forEach(id=>{if(!val(id))sel(id).classList.add('error')});
-    btn.textContent='Notify me of new tools';btn.disabled=false;return;
-  }
-  try{
-    // REPLACE xqenbvab WITH YOUR FORMSPREE FORM ID
-    const res=await fetch('https://formspree.io/f/xqenbvab',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name,email,phone,source:'PromptKit by ST'})
-    });
-    if(res.ok){
-      sel('lead-form-wrap').style.display='none';
-      sel('lead-success').style.display='block';
-    } else {
-      btn.textContent='Try again';btn.disabled=false;
-    }
-  }catch{btn.textContent='Try again';btn.disabled=false;}
+  e.preventDefault();
+  const btn=sel('lsub');btn.disabled=true;btn.querySelector('span').textContent=lang==='bm'?'Menghantar...':'Submitting...';
+  const name=val('lead-name'),email=val('lead-email'),phone=val('lead-phone');
+  if(!name||!email||!phone){['lead-name','lead-email','lead-phone'].forEach(id=>{if(!val(id))sel(id).classList.add('error')});btn.disabled=false;btn.querySelector('span').textContent=t('bnotify');return}
+  try{
+    const res=await fetch('https://formspree.io/f/xqenbvab',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,phone,source:'Gamma Prompt Generator By ST',lang})});
+    if(res.ok){sel('lead-form-wrap').style.display='none';sel('lead-success').style.display='block'}
+    else{btn.disabled=false;btn.querySelector('span').textContent=lang==='bm'?'Cuba lagi':'Try again'}
+  }catch{btn.disabled=false;btn.querySelector('span').textContent=lang==='bm'?'Cuba lagi':'Try again'}
 }
 
-function restart(){
-  sel('result-section').style.display='none';
-  sel('progress-wrap').style.display='block';
-  for(let i=1;i<=3;i++){sel(`step-${i}`).style.display='';sel(`step-${i}`).classList.remove('active')}
-  sel('step-1').classList.add('active');
-  sel('lead-form-wrap').style.display='block';
-  sel('lead-success').style.display='none';
-  sel('lead-submit-btn').textContent='Notify me of new tools';
-  sel('lead-submit-btn').disabled=false;
-  state.step=1;updateProgress();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+function restart(){sel('result-section').style.display='none';sel('progress-wrap').style.display='block';for(let i=1;i<=3;i++){sel(`step-${i}`).style.display='';sel(`step-${i}`).classList.remove('active')}sel('step-1').classList.add('active');sel('lead-form-wrap').style.display='block';sel('lead-success').style.display='none';const sb=sel('lsub');sb.disabled=false;if(sb.querySelector('span'))sb.querySelector('span').textContent=t('bnotify');state.step=1;updateProg();window.scrollTo({top:0,behavior:'smooth'})}
+
+// Init
+updateUC();
+setLang('en');
 </script>
 </body>
 </html>
